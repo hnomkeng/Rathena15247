@@ -102,7 +102,7 @@ static int block_free_count = 0, block_free_lock = 0;
 static struct block_list *bl_list[BL_LIST_MAX];
 static int bl_list_count = 0;
 
-#define MAP_MAX_MSG 1600
+#define MAP_MAX_MSG 1601
 
 struct map_data map[MAX_MAP_PER_SERVER];
 int map_num = 0;
@@ -1862,6 +1862,10 @@ int map_quit(struct map_session_data *sd) {
 
 	if (sd->state.buyingstore)
 		idb_remove(buyingstore_getdb(), sd->status.char_id);
+	
+	// Addon Cell PVP [Napster]
+	if( sd->state.pvp && map_getcell( sd->bl.m, sd->bl.x, sd->bl.y, CELL_CHKPVP ) )
+		map_pvp_area(sd, 0);
 
 	pc_damage_log_clear(sd,0);
 	party_booking_delete(sd); // Party Booking [Spiria]
@@ -2837,6 +2841,8 @@ int map_getcellp(struct map_data* m,int16 x,int16 y,cell_chk cellchk)
 			return (cell.maelstrom);
 		case CELL_CHKICEWALL:
 			return (cell.icewall);
+		case CELL_CHKPVP:	// Addon Cell PVP [Napster]
+			return (cell.pvp);
 
 		// special checks
 		case CELL_CHKPASS:
@@ -2891,6 +2897,7 @@ void map_setcell(int16 m, int16 x, int16 y, cell_t cell, bool flag)
 		case CELL_NOCHAT:        map[m].cell[j].nochat = flag;        break;
 		case CELL_MAELSTROM:	 map[m].cell[j].maelstrom = flag;	  break;
 		case CELL_ICEWALL:		 map[m].cell[j].icewall = flag;		  break;
+		case CELL_PVP:			 map[m].cell[j].pvp = flag;			  break;		// Addon Cell PVP [Napster]
 		default:
 			ShowWarning("map_setcell: invalid cell type '%d'\n", (int)cell);
 			break;
@@ -4360,6 +4367,41 @@ const char* map_msg_txt(struct map_session_data *sd, int msg_number){
 	return "??";
 }
 
+// Addon Cell PVP [Napster]
+int map_pvp_area(struct map_session_data* sd, bool flag)
+{
+	switch(flag) 
+	{
+		case 1:
+			clif_map_property(sd, MAPPROPERTY_FREEPVPZONE);
+			clif_maptypeproperty2(&sd->bl,SELF);
+			if (sd->pvp_timer == INVALID_TIMER) {
+				map[sd->bl.m].cell_pvpuser++;
+ 
+				sd->pvp_timer  = add_timer(gettick()+200, pc_calc_pvprank_timer, sd->bl.id, 0);
+				sd->pvp_rank  = 0;
+				sd->pvp_lastusers = 0;
+				sd->pvp_point  = 5;
+				sd->pvp_won   = 0;
+				sd->pvp_lost  = 0;
+				sd->state.pvp  = 1;
+				sd->pvpcan_walkout_tick = gettick();
+			}
+			break;
+		default:
+			clif_pvpset(sd, 0, 0, 2);
+			map[sd->bl.m].cell_pvpuser--;
+
+			if( sd->pvp_timer != INVALID_TIMER )
+				delete_timer(sd->pvp_timer, pc_calc_pvprank_timer);
+
+			sd->pvp_timer  = INVALID_TIMER;
+			sd->state.pvp  = 0;
+			break;
+	}
+
+	return 0;
+}
 
 /// Called when a terminate signal is received.
 void do_shutdown(void)

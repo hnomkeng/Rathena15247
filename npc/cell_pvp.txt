@@ -1,0 +1,7 @@
+-	script	cellpvp	-1,{
+end;
+
+OnInit:
+setcell "morocc",153,92,162,87,cell_pvp, 1;
+end;
+}

@@ -242,6 +242,7 @@ struct map_session_data {
 		unsigned int banking : 1; //1 when we using the banking system 0 when closed
 		unsigned int hpmeter_visible : 1;
 		unsigned disable_atcommand_on_npc : 1; //Prevent to use atcommand while talking with NPC [Kichi]
+		unsigned int pvp : 1;		// Addon Cell PVP [Napster]
 		uint8 isBoundTrading; // Player is currently add bound item to trade list [Cydh]
 		bool ignoretimeout; // Prevent the SECURE_NPCTIMEOUT function from closing current script.
 	} state;
@@ -317,6 +318,7 @@ struct map_session_data {
 	unsigned int canskill_tick; // used to prevent abuse from no-delay ACT files
 	unsigned int cansendmail_tick; // [Mail System Flood Protection]
 	unsigned int ks_floodprotect_tick; // [Kill Steal Protection]
+	unsigned int pvpcan_walkout_tick;		// Addon Cell PVP [Napster]
 
 	struct s_item_delay {
 		unsigned short nameid;

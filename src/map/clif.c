@@ -10240,6 +10240,12 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 	mail_clear(sd);
 
 	clif_maptypeproperty2(&sd->bl,SELF);
+	
+	// Addon Cell PVP [Napster]
+	if( !sd->state.pvp && map_getcell( sd->bl.m, sd->bl.x, sd->bl.y, CELL_CHKPVP) )
+		map_pvp_area(sd, 1);
+	else if( sd->state.pvp && !map_getcell( sd->bl.m, sd->bl.x, sd->bl.y, CELL_CHKPVP) )
+		map_pvp_area(sd, 0);
 
 	/* Guild Aura Init */
 	if( sd->state.gmaster_flag ) {

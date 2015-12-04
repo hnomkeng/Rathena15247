@@ -385,6 +385,7 @@ cell_novending	6
 cell_nochat	7
 cell_maelstrom	8
 cell_icewall	9
+cell_pvp		10		// Addon Cell PVP [Napster]
 
 //cell_gettype	0
 cell_chkwall	1
@@ -402,6 +403,7 @@ cell_chknovending	12
 cell_chknochat	13
 cell_chkmaelstrom	14
 cell_chkicewall	15
+cell_chkpvp	16		// Addon Cell PVP [Napster]
 
 StatusPoint	9	1
 BaseLevel	11	1
