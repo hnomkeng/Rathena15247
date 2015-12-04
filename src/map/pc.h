@@ -669,6 +669,11 @@ struct map_session_data {
 		short prizeStage;
 		bool claimPrize;
 	} roulette;
+	/**
+	 * Extended Vending system [Lilith]
+	 **/
+	unsigned short vend_loot;
+	int vend_lvl;
 };
 
 struct eri *pc_sc_display_ers; /// Player's SC display table

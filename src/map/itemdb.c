@@ -1171,6 +1171,33 @@ static void itemdb_roulette_free(void) {
 	}
 }
 
+/**
+ * Extended Vending system [Lilith]
+ **/
+static bool itemdb_read_vending(char* fields[], int columns, int current)
+{
+	struct item_data* id;
+	unsigned short nameid;
+ 
+	nameid = atoi(fields[0]);
+
+	if( ( id = itemdb_exists(nameid) ) == NULL )
+	{
+		ShowWarning("itemdb_read_vending: Invalid item id %hu.\n", nameid);
+		return false;
+	}
+
+	if( id->type == IT_ARMOR || id->type == IT_WEAPON || id->type == IT_SHADOWGEAR)
+	{
+		ShowWarning("itemdb_read_vending: item id %hu cannot be equipment or weapon.\n", nameid);
+		return false;
+	}
+
+	item_vend[current].itemid = nameid;
+
+	return true;
+}
+
 /*======================================
  * Applies gender restrictions according to settings. [Skotlex]
  *======================================*/
@@ -1597,6 +1624,7 @@ static void itemdb_read(void) {
 		sv_readdb(dbsubpath1, "item_avail.txt",         ',', 2, 2, -1, &itemdb_read_itemavail, i);
 		sv_readdb(dbsubpath1, "item_stack.txt",         ',', 3, 3, -1, &itemdb_read_stack, i);
 		sv_readdb(dbsubpath1, "item_nouse.txt",         ',', 3, 3, -1, &itemdb_read_nouse, i);
+		sv_readdb(dbsubpath1, "item_vending.txt",		',', 1, 1, ARRAYLENGTH(item_vend), &itemdb_read_vending, i); // Extended Vending system [Lilith]
 		
 		itemdb_read_itemgroup(dbsubpath2, i);
 		itemdb_read_combos(dbsubpath2,i); //TODO change this to sv_read ? id#script ?
@@ -1688,6 +1716,7 @@ void itemdb_reload(void) {
 	itemdb_group->clear(itemdb_group, itemdb_group_free);
 	itemdb->clear(itemdb, itemdb_final_sub);
 	db_clear(itemdb_combo);
+	memset(item_vend,0,sizeof(item_vend)); // Extended Vending system [Lilith]
 	if (battle_config.feature_roulette)
 		itemdb_roulette_free();
 

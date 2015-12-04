@@ -2102,4 +2102,9 @@ enum e_skill_damage_caster {
 #define SKILL_CHK_ELEM(skill_id)  ( (skill_id) >= EL_SKILLBASE && (skill_id) < EL_SKILLBASE+MAX_ELEMENTALSKILL )
 #define SKILL_CHK_GUILD(skill_id) ( (skill_id) >= GD_SKILLBASE && (skill_id) < GD_SKILLBASE+MAX_GUILDSKILL )
 
+/**
+ * Extended Vending system [Lilith]
+ **/
+int skill_vending( struct map_session_data *sd, unsigned short nameid);
+
 #endif /* _SKILL_H_ */

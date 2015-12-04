@@ -944,6 +944,7 @@ enum clif_colors {
 	COLOR_RED,
 	COLOR_WHITE,
 	COLOR_YELLOW,
+	COLOR_CYAN,
 	COLOR_MAX
 };
 unsigned long color_table[COLOR_MAX];
@@ -969,5 +970,10 @@ void clif_merge_item_open(struct map_session_data *sd);
 void clif_broadcast_obtain_special_item(const char *char_name, unsigned short nameid, unsigned short container, enum BROADCASTING_SPECIAL_ITEM_OBTAIN type, const char *srcname);
 
 void clif_dressing_room(struct map_session_data *sd, int view);
+
+/**
+ * Extended Vending system [Lilith]
+ **/
+int clif_vend(struct map_session_data *sd, int skill_lv);
 
 #endif /* _CLIF_H_ */

@@ -7098,12 +7098,46 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 
 	case MC_VENDING:
 		if(sd)
-		{	//Prevent vending of GMs with unnecessary Level to trade/drop. [Skotlex]
-			if ( !pc_can_give_items(sd) )
-				clif_skill_fail(sd,skill_id,USESKILL_FAIL_LEVEL,0);
-			else {
-				sd->state.prevend = 1;
-				clif_openvendingreq(sd,2+skill_lv);
+		{
+			if (!pc_can_give_items(sd)) //Prevent vending of GMs with unnecessary Level to trade/drop. [Skotlex]
+				clif_skill_fail(sd,MC_VENDING,USESKILL_FAIL_LEVEL,0);
+			else {	
+				if(battle_config.extended_vending){
+					struct item_data *item;
+					char output[1024];
+					int c = 0, i, d = 0;
+					
+					sd->vend_lvl = skill_lv;
+					if(battle_config.item_zeny)
+						d++;
+					if(battle_config.item_cash)
+						d++;
+					for( c = d, i = 0; i < ARRAYLENGTH(item_vend); i ++ ) {
+						if((item = itemdb_exists(item_vend[i].itemid)) != NULL && 
+							item->nameid != ITEMID_ZENY && item->nameid != ITEMID_CASH)
+							c++;
+					}
+					
+					if(c > 1)
+						clif_vend(sd,sd->vend_lvl);
+					else { 
+						sd->state.prevend = 1;
+						if(c) {
+							item = itemdb_exists(battle_config.item_zeny?battle_config.item_zeny:battle_config.item_cash?battle_config.item_cash:item_vend[0].itemid);
+							sd->vend_loot = item->nameid;
+							sprintf(output,msg_txt(sd,1596),itemdb_jname(sd->vend_loot));
+							clif_colormes(sd->fd, color_table[COLOR_CYAN], output);
+							clif_openvendingreq(sd,2+sd->vend_lvl);
+						} else {
+							sd->vend_loot = 0;
+							clif_openvendingreq(sd,2+sd->vend_lvl);
+						}
+					}
+				} else {
+					sd->vend_loot = 0;
+					sd->state.prevend = 1;
+					clif_openvendingreq(sd,2+skill_lv);
+				}
 			}
 		}
 		break;
@@ -17640,6 +17674,40 @@ struct skill_unit_group_tickset *skill_unitgrouptickset_search(struct block_list
 	set[j].id = id;
 	set[j].tick = tick;
 	return &set[j];
+}
+
+/**
+ * Extended Vending system [Lilith]
+ **/
+int skill_vending( struct map_session_data *sd, unsigned short nameid) {
+
+	struct item_data *item;
+	char output[1024];
+	
+	nullpo_ret(sd);
+
+	if ( !pc_can_give_items(sd) ) {
+		clif_skill_fail(sd,MC_VENDING,USESKILL_FAIL_LEVEL,0);
+		return 0;
+	}
+
+	if( nameid <= 0 || nameid >= (MAX_ITEMID)) {
+		clif_skill_fail(sd,MC_VENDING,USESKILL_FAIL_LEVEL,0);
+		return 0;
+	}
+
+	if( (item = itemdb_exists(nameid)) == NULL ) {
+		clif_skill_fail(sd,MC_VENDING,USESKILL_FAIL_LEVEL,0);
+		return 0;
+	}
+
+	sd->vend_loot = nameid;
+	sd->state.prevend = 1;
+	clif_openvendingreq(sd,2+sd->vend_lvl);
+	sprintf(output,msg_txt(sd,1594),item->jname);
+	clif_colormes(sd->fd, color_table[COLOR_CYAN],output);
+
+	return 0;
 }
 
 /*==========================================

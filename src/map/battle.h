@@ -592,6 +592,15 @@ extern struct Battle_Config
 	int monster_loot_search_type;
 	int feature_roulette;
 	int monster_hp_bars_info;
+	/**
+	 * Extended Vending system [Lilith]
+	 **/
+	int extended_vending;
+	int show_broadcas_info;
+	int show_item_vending;
+	int ex_vending_info;
+	int item_zeny;
+	int item_cash;
 } battle_config;
 
 void do_init_battle(void);

@@ -8176,6 +8176,15 @@ static const struct _battle_data {
 	{ "monster_loot_search_type",           &battle_config.monster_loot_search_type,        1,      0,      1,              },
 	{ "feature.roulette",                   &battle_config.feature_roulette,                1,      0,      1,              },
 	{ "monster_hp_bars_info",                &battle_config.monster_hp_bars_info,             1,      0,      1,              },
+	/**
+	 * Extended Vending system [Lilith]
+	 **/
+	{ "extended_vending",					&battle_config.extended_vending,				1,		0,		1,				},
+	{ "show_broadcas_info",				&battle_config.show_broadcas_info,				1,		0,		1,				},
+	{ "show_item_vending",					&battle_config.show_item_vending,				1,		0,		1,				},
+	{ "ex_vending_info",					&battle_config.ex_vending_info,					1,		0,		1,				},
+	{ "item_zeny",							&battle_config.item_zeny,						0,		0,		MAX_ITEMID,		},
+	{ "item_cash",							&battle_config.item_cash,						0,		0,		MAX_ITEMID,		},
 };
 
 #ifndef STATS_OPT_OUT
