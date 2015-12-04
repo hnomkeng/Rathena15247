@@ -1,5 +1,5 @@
-﻿Build started 4/12/2558 21:34:23.
-     1>Project "C:\Users\Hnomkeng PC\Desktop\Rathena15247\vcproj-13\login-server.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 4/12/2558 22:45:29.
+     1>Project "C:\Users\Hnomkeng PC\Desktop\Rathena15247\vcproj-13\login-server.vcxproj" on node 3 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\3rdparty\libconfig /I..\3rdparty\mysql\include /I..\3rdparty\msinttypes\include /I..\3rdparty\mt19937ar /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WIN32 /D __WIN32 /D _DEBUG /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D FD_SETSIZE=4096 /D WITH_SQL /D LIBCONFIG_STATIC /D YY_USE_CONST /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"login-server\Debug\\" /Fd"login-server\Debug\vc120.pdb" /Gd /TC /wd4100 /wd4800 /analyze- /errorReport:prompt ..\3rdparty\libconfig\grammar.c ..\3rdparty\libconfig\libconfig.c ..\3rdparty\libconfig\scanctx.c ..\3rdparty\libconfig\scanner.c ..\3rdparty\libconfig\strbuf.c ..\3rdparty\mt19937ar\mt19937ar.c ..\src\common\mempool.c ..\src\common\mutex.c ..\src\common\raconf.c ..\src\common\thread.c ..\src\common\core.c ..\src\common\conf.c ..\src\common\db.c ..\src\common\ers.c ..\src\common\malloc.c ..\src\common\md5calc.c ..\src\common\nullpo.c ..\src\common\random.c ..\src\common\showmsg.c ..\src\common\socket.c ..\src\common\sql.c ..\src\common\strlib.c ..\src\common\timer.c ..\src\common\utils.c ..\src\common\cli.c ..\src\common\msg_conf.c ..\src\login\account.c ..\src\login\ipban.c ..\src\login\login.c ..\src\login\loginchrif.c ..\src\login\loginclif.c ..\src\login\logincnslif.c ..\src\login\loginlog.c
          grammar.c
@@ -22,13 +22,13 @@
          nullpo.c
          random.c
          showmsg.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\nullpo.c)
          socket.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\nullpo.c)
          sql.c
          strlib.c
          timer.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\timer.c)
          utils.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\timer.c)
          cli.c
          msg_conf.c
          account.c
@@ -77,4 +77,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.96
+Time Elapsed 00:00:06.34

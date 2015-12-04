@@ -1,4 +1,4 @@
-﻿Build started 4/12/2558 22:12:08.
+﻿Build started 4/12/2558 22:45:29.
      1>Project "C:\Users\Hnomkeng PC\Desktop\Rathena15247\vcproj-13\map-server.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\3rdparty\mysql\include /I..\3rdparty\zlib\include /I..\3rdparty\pcre\include /I..\3rdparty\msinttypes\include /I..\3rdparty\mt19937ar /I..\3rdparty\libconfig /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WIN32 /D __WIN32 /D _DEBUG /D PCRE_SUPPORT /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D FD_SETSIZE=4096 /D LIBCONFIG_STATIC /D YY_USE_CONST /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _MBCS /Gm- /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"map-server\Debug\\" /Fd"map-server\Debug\vc120.pdb" /Gd /TC /wd4018 /wd4100 /wd4800 /analyze- /errorReport:prompt ..\3rdparty\libconfig\grammar.c ..\3rdparty\libconfig\libconfig.c ..\3rdparty\libconfig\scanctx.c ..\3rdparty\libconfig\scanner.c ..\3rdparty\libconfig\strbuf.c ..\3rdparty\mt19937ar\mt19937ar.c ..\src\common\conf.c ..\src\common\core.c ..\src\common\db.c ..\src\common\des.c ..\src\common\ers.c ..\src\common\grfio.c ..\src\common\malloc.c ..\src\common\mapindex.c ..\src\common\md5calc.c ..\src\common\mempool.c ..\src\common\mutex.c ..\src\common\nullpo.c ..\src\common\raconf.c ..\src\common\random.c ..\src\common\showmsg.c ..\src\common\socket.c ..\src\common\sql.c ..\src\common\strlib.c ..\src\common\thread.c ..\src\common\timer.c ..\src\common\utils.c ..\src\common\cli.c ..\src\common\msg_conf.c ..\src\map\atcommand.c ..\src\map\battle.c ..\src\map\battleground.c ..\src\map\buyingstore.c ..\src\map\cashshop.c ..\src\map\channel.c ..\src\map\chat.c ..\src\map\chrif.c ..\src\map\clif.c ..\src\map\date.c ..\src\map\duel.c ..\src\map\elemental.c ..\src\map\guild.c ..\src\map\intif.c ..\src\map\itemdb.c ..\src\map\log.c ..\src\map\mail.c ..\src\map\map.c ..\src\map\mapreg.c ..\src\map\homunculus.c ..\src\map\instance.c ..\src\map\mercenary.c ..\src\map\mob.c ..\src\map\npc.c ..\src\map\npc_chat.c ..\src\map\party.c ..\src\map\path.c ..\src\map\pc.c ..\src\map\pc_groups.c ..\src\map\pet.c ..\src\map\quest.c ..\src\map\script.c ..\src\map\searchstore.c ..\src\map\skill.c ..\src\map\status.c ..\src\map\storage.c ..\src\map\trade.c ..\src\map\unit.c ..\src\map\vending.c
@@ -21,8 +21,8 @@
          mempool.c
          mutex.c
          nullpo.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\nullpo.c)
          raconf.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\nullpo.c)
          random.c
          showmsg.c
          socket.c
@@ -45,53 +45,53 @@
          cashshop.c
          channel.c
          chat.c
-         chrif.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\chat.c)
+         chrif.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\chrif.c)
          clif.c
          date.c
          duel.c
          elemental.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\chrif.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\elemental.c)
-         guild.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\guild.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\clif.c)
+         guild.c
          intif.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\guild.c)
          itemdb.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\itemdb.c)
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\intif.c)
          log.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\log.c)
          mail.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\mail.c)
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\intif.c)
          map.c
          mapreg.c
          homunculus.c
          instance.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\homunculus.c)
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\map.c)
          mercenary.c
-         mob.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\mercenary.c)
+         mob.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\map.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\mob.c)
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\instance.c)
          npc.c
-         npc_chat.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\instance.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\npc.c)
+         npc_chat.c
          party.c
          path.c
-         pc.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\path.c)
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\pc.c)
+         pc.c
          pc_groups.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\pc.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\party.c)
          pet.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\pet.c)
          quest.c
          script.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\quest.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\script.c)
          searchstore.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\quest.c)
          skill.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\skill.c)
          status.c
@@ -101,8 +101,8 @@
          trade.c
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\trade.c)
          unit.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\unit.c)
          vending.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\unit.c)
      1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\map\vending.c)
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\map-server.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\3rdparty\mysql\lib /LIBPATH:..\3rdparty\zlib\lib /LIBPATH:..\3rdparty\pcre\lib libcmtd.lib oldnames.lib ws2_32.lib libmysql.lib zdll.lib pcre.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\map-server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"..\map-server.lib" /MACHINE:X86 /SAFESEH:NO "map-server\Debug\grammar.obj"
@@ -178,4 +178,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.81
+Time Elapsed 00:00:09.78

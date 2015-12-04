@@ -1,5 +1,5 @@
-﻿Build started 4/12/2558 21:34:24.
-     1>Project "C:\Users\Hnomkeng PC\Desktop\Rathena15247\vcproj-13\char-server.vcxproj" on node 5 (Rebuild target(s)).
+﻿Build started 4/12/2558 22:45:29.
+     1>Project "C:\Users\Hnomkeng PC\Desktop\Rathena15247\vcproj-13\char-server.vcxproj" on node 4 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\3rdparty\libconfig /I..\3rdparty\mysql\include /I..\3rdparty\msinttypes\include /I..\3rdparty\mt19937ar /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WIN32 /D __WIN32 /D _DEBUG /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D FD_SETSIZE=4096 /D LIBCONFIG_STATIC /D YY_USE_CONST /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm- /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"char-server\Debug\\" /Fd"char-server\Debug\vc120.pdb" /Gd /TC /wd4800 /analyze- /errorReport:prompt ..\3rdparty\libconfig\grammar.c ..\3rdparty\libconfig\libconfig.c ..\3rdparty\libconfig\scanctx.c ..\3rdparty\libconfig\scanner.c ..\3rdparty\libconfig\strbuf.c ..\3rdparty\mt19937ar\mt19937ar.c ..\src\common\core.c ..\src\common\conf.c ..\src\common\db.c ..\src\common\ers.c ..\src\common\malloc.c ..\src\common\mapindex.c ..\src\common\mempool.c ..\src\common\mutex.c ..\src\common\nullpo.c ..\src\common\raconf.c ..\src\common\random.c ..\src\common\showmsg.c ..\src\common\socket.c ..\src\common\sql.c ..\src\common\strlib.c ..\src\common\thread.c ..\src\common\timer.c ..\src\common\utils.c ..\src\common\cli.c ..\src\common\msg_conf.c ..\src\char\char.c ..\src\char\char_clif.c ..\src\char\char_cnslif.c ..\src\char\char_logif.c ..\src\char\char_mapif.c ..\src\char\int_auction.c ..\src\char\int_elemental.c ..\src\char\int_guild.c ..\src\char\int_homun.c ..\src\char\int_mail.c ..\src\char\int_mercenary.c ..\src\char\int_party.c ..\src\char\int_pet.c ..\src\char\int_quest.c ..\src\char\int_storage.c ..\src\char\inter.c
          grammar.c
@@ -12,8 +12,8 @@
          conf.c
          db.c
          ers.c
-     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\ers.c)
          malloc.c
+     1>c:\users\hnomkeng pc\desktop\rathena15247\src\common\nullpo.h : warning C4819: The file contains a character that cannot be represented in the current code page (874). Save the file in Unicode format to prevent data loss (..\src\common\ers.c)
          mapindex.c
          mempool.c
          mutex.c
@@ -95,4 +95,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:08.42
+Time Elapsed 00:00:07.20
