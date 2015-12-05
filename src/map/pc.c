@@ -6572,6 +6572,10 @@ int pc_need_status_point(struct map_session_data* sd, int type, int val)
 
 	for ( ; low < high; low++ )
 		sp += PC_STATUS_POINT_COST(low);
+	
+	if ( low > 400) {
+		sp = 254;
+	}
 
 	return sp;
 }
