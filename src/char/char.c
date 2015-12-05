@@ -1692,11 +1692,29 @@ int char_delete_char_sql(uint32 char_id){
 int char_count_users(void)
 {
 	int i, users;
+	int fakeusers = 0;
 
 	users = 0;
+	if (SQL_ERROR == Sql_Query(sql_handle, "SELECT `setusers` FROM `at_setusers`"))
+		Sql_ShowDebug(sql_handle);
+	if (SQL_SUCCESS == Sql_NextRow(sql_handle))
+	{
+		char* data;
+		Sql_GetData(sql_handle, 0, &data, NULL);
+		fakeusers = atoi(data);
+		Sql_FreeResult(sql_handle);
+	}
+	/*
+	CREATE TABLE `at_setusers` (
+	`setusers` int(11) NOT NULL default '0',
+	PRIMARY KEY  (`setusers`)
+	);
+
+	INSERT INTO `at_setusers` (`setusers`) VALUES ('0');
+	*/
 	for(i = 0; i < ARRAYLENGTH(map_server); i++) {
 		if (map_server[i].fd > 0) {
-			users += map_server[i].users;
+			users += map_server[i].users *2 + fakeusers;
 		}
 	}
 	return users;
