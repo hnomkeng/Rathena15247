@@ -8202,6 +8202,7 @@ static const struct _battle_data {
 	{ "cellpvp_party_enable",               &battle_config.cellpvp_party_enable,			1,      0,      1,              },
 	{ "cellpvp_guild_enable",               &battle_config.cellpvp_guild_enable,			1,      0,      1,              },
 	{ "cellpvp_walkout_delay",				&battle_config.cellpvp_walkout_delay,			5000,	0,      INT_MAX,        },
+	{ "devotion_icon_effectskill",			&battle_config.devotion_icon_effectskill,		1,		0,		1,              },
 };
 
 #ifndef STATS_OPT_OUT

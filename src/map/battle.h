@@ -610,6 +610,7 @@ extern struct Battle_Config
 	int cellpvp_party_enable;
 	int cellpvp_guild_enable;
 	int cellpvp_walkout_delay;
+	int devotion_icon_effectskill;	// Addon Devotion Icon Effect skill [Napster]
 } battle_config;
 
 void do_init_battle(void);
