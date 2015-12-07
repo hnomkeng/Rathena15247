@@ -7822,17 +7822,47 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			return 0;
 		break;
 	case SC_STONE:
+		if (status->int_ >= 400)
+			return 0;
 		if(sc->data[SC_POWER_OF_GAIA])
 			return 0;
+		if (sc->opt1)
+			return 0; // Cannot override other opt1 status changes. [Skotlex]
+		if((type == SC_FREEZE || type == SC_FREEZING || type == SC_CRYSTALIZE) && sc->data[SC_WARMER])
+			return 0; // Immune to Frozen and Freezing status if under Warmer status. [Jobbie]
+	break;
 	case SC_FREEZE:
+		if (status->luk >= 400)
+			return 0;
 		// Undead are immune to Freeze/Stone
 		if (undead_flag && !(flag&SCSTART_NOAVOID))
 			return 0;
+		if (sc->opt1)
+			return 0; // Cannot override other opt1 status changes. [Skotlex]
+		if((type == SC_FREEZE || type == SC_FREEZING || type == SC_CRYSTALIZE) && sc->data[SC_WARMER])
+			return 0; // Immune to Frozen and Freezing status if under Warmer status. [Jobbie]
+	break;
 	case SC_DEEPSLEEP:
 	case SC_SLEEP:
+		if (status->int_ >= 400)
+			return 0;
+		if (sc->opt1)
+			return 0; // Cannot override other opt1 status changes. [Skotlex]
+		if((type == SC_FREEZE || type == SC_FREEZING || type == SC_CRYSTALIZE) && sc->data[SC_WARMER])
+			return 0; // Immune to Frozen and Freezing status if under Warmer status. [Jobbie]
+	break;
 	case SC_STUN:
+		if (status->vit >= 400)
+			return 0;
+		if (sc->opt1)
+			return 0; // Cannot override other opt1 status changes. [Skotlex]
+		if((type == SC_FREEZE || type == SC_FREEZING || type == SC_CRYSTALIZE) && sc->data[SC_WARMER])
+			return 0; // Immune to Frozen and Freezing status if under Warmer status. [Jobbie]
+	break;
 	case SC_FREEZING:
 	case SC_CRYSTALIZE:
+		if (status->luk >= 400)
+			return 0;
 		if (sc->opt1)
 			return 0; // Cannot override other opt1 status changes. [Skotlex]
 		if((type == SC_FREEZE || type == SC_FREEZING || type == SC_CRYSTALIZE) && sc->data[SC_WARMER])
