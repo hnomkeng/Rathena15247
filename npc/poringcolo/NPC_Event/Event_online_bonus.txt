@@ -1,0 +1,26 @@
+-	script	Online Bonus	-1,{
+OnInit:
+	set .time_count, 10;	// ออนไลน์นานเท่าไหร่ จึงจะได้ Cash (นาที)
+	end;
+
+OnPCLoginEvent:
+	initnpctimer getcharid(3);
+	end;
+
+OnTimer60000:
+	stopnpctimer;
+	initnpctimer;
+	getmapxy( .@map$, .@x, .@y, 0 );
+	if ( .@map$ != @map$ || .@x != @x || .@y != @y ) {	// ถ้าไม่ขยับไปไหน จะพักเวลาไว้
+		set @map$, .@map$;
+		set @x, .@x;
+		set @y, .@y;
+		set @count, @count+1;
+		if ( @count >= .time_count ) {
+			set @count, 0;
+			getitem 7539,10; // กำหนดของรางวัลตรงนี้
+			dispbottom "คุณได้รับ 10 Poring Coin จากกิจกรรมออนไลน์โบนัส";
+		}
+	}
+	end;
+}

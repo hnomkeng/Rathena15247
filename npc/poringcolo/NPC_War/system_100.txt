@@ -1,0 +1,16 @@
+prtg_cas01,0,0,0	script	 #gvg100	-1,{
+OnPCLoadMapEvent:
+	if(readparam(13) > 100) goto no;
+	if(readparam(14) > 100) goto no;
+	if(readparam(15) > 100) goto no;
+	if(readparam(16) > 100) goto no;
+	if(readparam(17) > 100) goto no;
+	if(readparam(18) > 100) goto no;
+	end;
+	
+	no:	
+		dispbottom "[ผู้ดูแลทางเข้า]";
+		dispbottom "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่มี Status ไม่เกิน 100 เท่านั้น";
+	end;
+}
+prtg_cas01	mapflag	loadevent

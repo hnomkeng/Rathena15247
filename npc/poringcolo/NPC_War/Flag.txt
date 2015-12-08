@@ -1,0 +1,314 @@
+oasis,168,78,0	warp	jail#in	1,1,sec_pri,18,18
+sec_pri,18,15,0	warp	jail#exit	1,1,oasis,165,78
+
+-	script	#cellpvp	-1,{
+end;
+
+OnInit:
+waitingroom "จุดชมวัยรุ่นตีกัน",0;
+end;
+}
+oasis,154,134,4	duplicate(#cellpvp)	ป้าย#1	4_BULLETIN_BOARD2
+oasis,165,134,4	duplicate(#cellpvp)	ป้าย#2	4_BULLETIN_BOARD2
+oasis,120,166,2	duplicate(#cellpvp)	ป้าย#3	4_BULLETIN_BOARD2
+oasis,120,179,2	duplicate(#cellpvp)	ป้าย#4	4_BULLETIN_BOARD2
+oasis,154,209,8	duplicate(#cellpvp)	ป้าย#5	4_BULLETIN_BOARD2
+oasis,165,209,8	duplicate(#cellpvp)	ป้าย#6	4_BULLETIN_BOARD2
+oasis,199,179,6	duplicate(#cellpvp)	ป้าย#7	4_BULLETIN_BOARD2
+oasis,199,164,6	duplicate(#cellpvp)	ป้าย#8	4_BULLETIN_BOARD2
+
+//ธงกิล
+oasis,168,72,4	script	Basic Castle#1	722,{
+	set .@GID, GetCastleData("payg_cas01",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePy01:
+	FlagEmblem GetCastleData("payg_cas01",1);
+	end;
+}
+oasis,203,87,4	script	Basic Castle#1#2	722,{
+	set .@GID, GetCastleData("payg_cas01",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePy01:
+	FlagEmblem GetCastleData("payg_cas01",1);
+	end;
+}
+oasis,168,68,4	script	Mini Castle#1	722,{
+	set .@GID, GetCastleData("prtg_cas01",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePt01:
+	FlagEmblem GetCastleData("prtg_cas01",1);
+	end;
+}
+oasis,172,51,4	script	Mini Castle#2	722,{
+	set .@GID, GetCastleData("prtg_cas01",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePt01:
+	FlagEmblem GetCastleData("prtg_cas01",1);
+	end;
+}
+oasis,168,64,4	script	Bloody Castle#1	722,{
+	set .@GID, GetCastleData("prtg_cas05",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePt05:
+	FlagEmblem GetCastleData("prtg_cas05",1);
+	end;
+}
+oasis,154,68,6	script	Bloody Castle#2	722,{
+	set .@GID, GetCastleData("prtg_cas05",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePt05:
+	FlagEmblem GetCastleData("prtg_cas05",1);
+	end;
+}
+oasis,175,72,4	script	Emperor Castle#1	722,{
+	set .@GID, GetCastleData("payg_cas04",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePy04:
+	FlagEmblem GetCastleData("payg_cas04",1);
+	end;
+}
+oasis,151,55,4	script	Emperor Castle#2	722,{
+	set .@GID, GetCastleData("payg_cas04",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastlePy04:
+	FlagEmblem GetCastleData("payg_cas04",1);
+	end;
+}
+oasis,175,68,4	script	God's Throne#1	722,{
+	set .@GID, GetCastleData("aldeg_cas02",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastleA02:
+	FlagEmblem GetCastleData("aldeg_cas02",1);
+	end;
+}
+oasis,192,58,5	script	God's Throne#2	722,{
+	set .@GID, GetCastleData("aldeg_cas02",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastleA02:
+	FlagEmblem GetCastleData("aldeg_cas02",1);
+	end;
+}
+oasis,175,64,4	script	Baby Castle#1	722,{
+	set .@GID, GetCastleData("gefg_cas01",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastleG01:
+	FlagEmblem GetCastleData("gefg_cas01",1);
+	end;
+}
+oasis,125,58,4	script	Baby Castle#2	722,{
+	set .@GID, GetCastleData("gefg_cas01",1);
+	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes " ";
+	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
+	mes "we approve that this place is in";
+	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes " ";
+	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
+	mes "If there is anyone who objects to this,";
+	mes "prove your strength and honor with a steel blade in your hand.";
+	close;
+	end;
+
+OnRecvCastleG01:
+	FlagEmblem GetCastleData("gefg_cas01",1);
+	end;
+}
+
+
+// ป้ายหน้าบ้าน
+oasis,171,76,4	script	 #ป้ายเรือนจำ	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "เรือนจำ",0;
+end;
+}
+
+oasis,198,91,4	script	 #ป้ายเบสิค	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "บ้าน ไม่จุติ",0;
+end;
+}
+
+oasis,166,55,4	script	 #ป้าย100	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "บ้าน ไม่เกิน 100",0;
+end;
+}
+
+oasis,154,78,4	script	 #ป้าย200	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "บ้าน ไม่เกิน 200",0;
+end;
+}
+
+oasis,153,64,4	script	 #ป้าย400	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "บ้าน ไม่เกิน 400",0;
+end;
+}
+
+oasis,195,59,4	script	 #ป้าย800	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "บ้าน ไม่จำกัด",0;
+end;
+}
+
+oasis,128,58,4	script	 #ป้ายเบบี้	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "บ้าน เบบี้เท่านั้น",0;
+end;
+}
+
+oasis,182,98,4	script	 #ร้านค้า	2_BOARD1,{
+end;
+
+OnInit:
+waitingroom "ร้านค้า",0;
+end;
+}

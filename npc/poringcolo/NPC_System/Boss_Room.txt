@@ -1,0 +1,104 @@
+oasis,165,124,4	script	ห้องล่าบอส	4_MAN_GALTUN1,{
+mes "ผู้ดูแลทางเข้า";
+mes "โปรดเลือกระดับที่คุณต้องการ";
+next;
+menu
+	"ไม่เคยจุติ",nojuti,
+	"สเตตัสไม่เกิน 50",stat50,
+	"สเตตัสไม่เกิน 100",stat100,
+	"สเตตัสไม่เกิน 200",stat200;
+
+nojuti:
+if (juti == 0) {
+	warp "boss",0,0;
+	end;
+} else {
+	mes "[ผู้ดูแลทางเข้า]";
+	mes "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่ไม่เคยจุติ เท่านั้น";
+	end;
+}
+end;
+
+stat50:
+if(readparam(13) > 50) goto no;
+if(readparam(14) > 50) goto no;
+if(readparam(15) > 50) goto no;
+if(readparam(16) > 50) goto no;
+if(readparam(17) > 50) goto no;
+if(readparam(18) > 50) goto no;
+	
+warp "boss50",0,0;
+end;
+
+no:	
+mes "[ผู้ดูแลทางเข้า]";
+mes "เสียใจด้วย ห้องล่าบอสนี้สำหรับผู้ที่มี Status ไม่เกิน 50 เท่านั้น";
+end;
+
+end;
+
+stat100:
+if(readparam(13) > 100) goto no1;
+if(readparam(14) > 100) goto no1;
+if(readparam(15) > 100) goto no1;
+if(readparam(16) > 100) goto no1;
+if(readparam(17) > 100) goto no1;
+if(readparam(18) > 100) goto no1;
+	
+warp "boss100",0,0;
+end;
+
+no1:	
+mes "[ผู้ดูแลทางเข้า]";
+mes "เสียใจด้วย ห้องล่าบอสนี้สำหรับผู้ที่มี Status ไม่เกิน 100 เท่านั้น";
+end;
+
+end;
+
+stat200:
+if(readparam(13) > 200) goto no2;
+if(readparam(14) > 200) goto no2;
+if(readparam(15) > 200) goto no2;
+if(readparam(16) > 200) goto no2;
+if(readparam(17) > 200) goto no2;
+if(readparam(18) > 200) goto no2;
+	
+warp "boss200",0,0;
+end;
+
+no2:	
+mes "[ผู้ดูแลทางเข้า]";
+mes "เสียใจด้วย ห้องล่าบอสนี้สำหรับผู้ที่มี Status ไม่เกิน 200 เท่านั้น";
+end;
+
+end;
+	
+end;
+
+Oninit:
+waitingroom "ห้องล่าบอส",0;
+end;
+}
+
+
+boss,0,0,0,0	monster	Osiris	3302,1,1500000,300000,0
+boss,0,0,0,0	monster	Baphomet	3303,1,1500000,300000,0
+boss,0,0,0,0	monster	Amon Ra	3304,1,1500000,300000,0
+boss,0,0,0,0	monster	Doppelganger	3305,1,1500000,300000,0
+
+boss50,0,0,0,0	monster	Osiris	3302,1,1500000,300000,0
+boss50,0,0,0,0	monster	Baphomet	3303,1,1500000,300000,0
+boss50,0,0,0,0	monster	Amon Ra	3304,1,1500000,300000,0
+boss50,0,0,0,0	monster	Doppelganger	3305,1,1500000,300000,0
+
+boss100,0,0,0,0	monster	Osiris	3302,1,1500000,300000,0
+boss100,0,0,0,0	monster	Baphomet	3303,1,1500000,300000,0
+boss100,0,0,0,0	monster	Amon Ra	3304,1,1500000,300000,0
+boss100,0,0,0,0	monster	Doppelganger	3305,1,1500000,300000,0
+
+boss200,0,0,0,0	monster	Osiris	3302,1,1500000,300000,0
+boss200,0,0,0,0	monster	Baphomet	3303,1,1500000,300000,0
+boss200,0,0,0,0	monster	Amon Ra	3304,1,1500000,300000,0
+boss200,0,0,0,0	monster	Doppelganger	3305,1,1500000,300000,0
+
+//oasis,159,96,0,0	monster	Doppelganger	1288,1,0,0,0

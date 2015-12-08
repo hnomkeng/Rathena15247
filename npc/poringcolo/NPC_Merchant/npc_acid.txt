@@ -1,0 +1,146 @@
+-	shop	ShopCre	-1,7135:-1,7136:-1,7137:-1,7139:-1,12114:-1,12115:-1,12116:-1,12117:-1
+
+-	script	makeacid	-1,{
+
+npcshopattach "ShopCre";
+callshop "ShopCre",1;
+OnBuyItem:
+if(@bought_nameid==547){
+set Zeny,Zeny- (1650*@bought_quantity);
+getitem 504,1*@bought_quantity;
+getitem 1061,1*@bought_quantity;
+getitem 1092,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+}
+
+if(@bought_nameid==505){
+set Zeny,Zeny- (5000*@bought_quantity);
+getitem 510,1*@bought_quantity;
+getitem 911,1*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+}
+
+if(@bought_nameid==678){
+set Zeny,Zeny- (8000*@bought_quantity);
+getitem 657,1*@bought_quantity;
+getitem 937,1*@bought_quantity;
+getitem 952,1*@bought_quantity;
+getitem 7033,1*@bought_quantity;
+getitem 972,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 939,1*@bought_quantity;
+}
+
+if(@bought_nameid==7135){
+set Zeny,Zeny- (8000*@bought_quantity);
+getitem 970,1*@bought_quantity;
+getitem 1059,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+}
+
+if(@bought_nameid==7136){
+set Zeny,Zeny- (8000*@bought_quantity);
+getitem 929,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+}
+
+if(@bought_nameid==7137){
+set Zeny,Zeny- (8000*@bought_quantity);
+getitem 1032,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+}
+
+if(@bought_nameid==7138){
+set Zeny,Zeny- (5000*@bought_quantity);
+getitem 1050,1*@bought_quantity;
+getitem 1051,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+}
+
+if(@bought_nameid==7139){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 970,1*@bought_quantity;
+getitem 950,1*@bought_quantity;
+getitem 1044,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+}
+
+if(@bought_nameid==605){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 970,1*@bought_quantity;
+getitem 708,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+}
+
+if(@bought_nameid==606){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 518,1*@bought_quantity;
+getitem 704,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 713,1*@bought_quantity;
+}
+
+if(@bought_nameid==12118){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 716,1*@bought_quantity;
+getitem 1012,2*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+}
+
+if(@bought_nameid==12119){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 717,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 950,3*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+}
+
+if(@bought_nameid==12120){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 715,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 7126,2*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+}
+
+if(@bought_nameid==12121){
+set Zeny,Zeny- (10000*@bought_quantity);
+getitem 717,1*@bought_quantity;
+getitem 7134,1*@bought_quantity;
+getitem 1057,3*@bought_quantity;
+getitem 1093,1*@bought_quantity;
+}
+
+if(@bought_nameid==12114){
+set Zeny,Zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 904,3*@bought_quantity;
+}
+
+if(@bought_nameid==12115){
+set Zeny,Zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 946,3*@bought_quantity;
+}
+
+if(@bought_nameid==12116){
+set Zeny,Zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 947,3*@bought_quantity;
+}
+
+if(@bought_nameid==12117){
+set Zeny,Zeny- (5000*@bought_quantity);
+getitem 7433,1*@bought_quantity;
+getitem 1013,3*@bought_quantity;
+}
+
+}

@@ -1,0 +1,365 @@
+// หลังที่ 01
+//louyang,202,129,4	script	 บ้าน 1-1#gvg1	722,1,1,{
+louyang,202,129,4	script	 บ้าน 1-1#gvg1	722,{
+//OnTouch:
+set .@GID, GetCastleData("aldeg_cas03",1);
+set .npcname$,"^FF0000[ลงทะเบียนกิลด์วอร์]^000000";
+if ( getgmlevel() > 0 ) {
+mes .npcname$;
+if ( $@GuildEvent1 == 0 ) {
+mes "ลงทะเบียนกิลด์วอร์";
+mes "บ้าน Nuernberg";
+next;
+if ( select ( "^0000FF-^000000 ลงทะเบียน:" ) == 1 ) {
+
+New_Name:
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 1 ครับ";
+next;
+input .@GuildName_1;
+set .@GuildName_1$,getguildname(.@GuildName_1);
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 2 ครับ";
+next;
+input .@GuildName_2;
+set .@GuildName_2$,getguildname(.@GuildName_2);
+next;
+mes .npcname$;
+mes " ";
+mes "1) "+.@GuildName_1$;
+mes "2) "+.@GuildName_2$;
+next;
+menu "^0000FF-^000000 ตกลง",-,"^FF0000-^000000 ยกเลิก",New_Name;
+
+mes .npcname$;
+setarray $@GuildName$[1],.@GuildName_1$,.@GuildName_2$;
+set $@GuildEvent1,1;
+announce "[ กิลด์ "+.@GuildName_1$+" vs กิลด์ "+.@GuildName_2$+" บ้าน Nuernberg ]",bc_all,0x00FFFF;  
+close;
+}
+} else {
+next;
+if ( select ( "^0000FF-^000000 ดูกิจกรรม:^FF0000-^000000 ยกเลิกกิจกรรม" ) == 1 )
+//warp "gvg_cas01",40,235;
+warp "aldeg_cas03",200,165;
+else {
+set $@GuildEvent1,0;
+close;
+}
+}
+} else if ( $@GuildEvent1 == 1 && ( strcharinfo(2) == $@GuildName$[1] || strcharinfo(2) == $@GuildName$[2] ) ) {
+if( agitcheck() ) { 
+//warp "gvg_cas01",250,273;
+warp "aldeg_cas03",114,286;
+}
+}
+close;
+OnRecvCastleA03:
+	FlagEmblem GetCastleData("aldeg_cas03",1);
+	end;
+}
+
+// หลังที่ 02
+louyang,206,129,4	script	 บ้าน 1-1#gvg2	722,{
+//OnTouch:
+set .@GID, GetCastleData("gefg_cas03",1);
+set .npcname$,"^FF0000[ลงทะเบียนกิลด์วอร์]^000000";
+if ( getgmlevel() > 0 ) {
+mes .npcname$;
+if ( $@GuildEvent2 == 0 ) {
+mes "ลงทะเบียนกิลด์วอร์";
+mes "บ้าน Yesnelph";
+next;
+if ( select ( "^0000FF-^000000 ลงทะเบียน:" ) == 1 ) {
+
+New_Name:
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 1 ครับ";
+next;
+input .@GuildName_3;
+set .@GuildName_3$,getguildname(.@GuildName_3);
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 2 ครับ";
+next;
+input .@GuildName_4;
+set .@GuildName_4$,getguildname(.@GuildName_4);
+next;
+mes .npcname$;
+mes " ";
+mes "1) "+.@GuildName_3$;
+mes "2) "+.@GuildName_4$;
+next;
+menu "^0000FF-^000000 ตกลง",-,"^FF0000-^000000 ยกเลิก",New_Name;
+mes .npcname$;
+setarray $@GuildName$[3],.@GuildName_3$,.@GuildName_4$;
+set $@GuildEvent2,1;
+announce "[ กิลด์ "+.@GuildName_3$+" vs กิลด์ "+.@GuildName_4$+" บ้าน Yesnelph ]",bc_all,0x00FFFF;  
+close;
+}
+} else {
+next;
+if ( select ( "^0000FF-^000000 ดูกิจกรรม:^FF0000-^000000 ยกเลิกกิจกรรม" ) == 1 )
+//warp "gvg_cas02",40,235;
+warp "gefg_cas03",223,39;
+else {
+set $@GuildEvent2,0;
+close;
+}
+}
+} else if ( $@GuildEvent2 == 1 && ( strcharinfo(2) == $@GuildName$[3] || strcharinfo(2) == $@GuildName$[4] ) ) {
+if( agitcheck() ) { 
+//warp "gvg_cas02",250,273;
+warp "gefg_cas03",90,159;
+}
+}
+close;
+OnRecvCastleA03:
+	FlagEmblem GetCastleData("gefg_cas03",1);
+	end;
+}
+
+// หลังที่ 03
+louyang,229,129,4	script	 บ้าน 1-1#gvg3	722,{
+//OnTouch:
+set .@GID, GetCastleData("payg_cas03",1);
+set .npcname$,"^FF0000[ลงทะเบียนกิลด์วอร์]^000000";
+if ( getgmlevel() > 0 ) {
+mes .npcname$;
+if ( $@GuildEvent3 == 0 ) {
+mes "ลงทะเบียนกิลด์วอร์";
+mes "บ้าน Holy Shadow";
+next;
+if ( select ( "^0000FF-^000000 ลงทะเบียน:" ) == 1 ) {
+
+New_Name:
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 1 ครับ";
+next;
+input .@GuildName_5;
+set .@GuildName_5$,getguildname(.@GuildName_5);
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 2 ครับ";
+next;
+input .@GuildName_6;
+set .@GuildName_6$,getguildname(.@GuildName_6);
+next;
+mes .npcname$;
+mes " ";
+mes "1) "+.@GuildName_5$;
+mes "2) "+.@GuildName_6$;
+next;
+menu "^0000FF-^000000 ตกลง",-,"^FF0000-^000000 ยกเลิก",New_Name;
+
+mes .npcname$;
+setarray $@GuildName$[5],.@GuildName_5$,.@GuildName_6$;
+set $@GuildEvent3,1;
+announce "[ กิลด์ "+.@GuildName_5$+" vs กิลด์ "+.@GuildName_6$+" บ้าน Holy Shadow ]",bc_all,0x00FFFF;  
+close;
+}
+} else {
+next;
+if ( select ( "^0000FF-^000000 ดูกิจกรรม:^FF0000-^000000 ยกเลิกกิจกรรม" ) == 1 )
+warp "payg_cas03",9,288;
+else {
+set $@GuildEvent3,0;
+close;
+}
+}
+} else if ( $@GuildEvent3 == 1 && ( strcharinfo(2) == $@GuildName$[5] || strcharinfo(2) == $@GuildName$[6] ) ) {
+if( agitcheck() ) { 
+warp "payg_cas03",225,25;
+}
+}
+close;
+OnRecvCastleA03:
+	FlagEmblem GetCastleData("payg_cas03",1);
+	end;
+}
+
+// หลังที่ 04
+louyang,233,129,4	script	 บ้าน 1-1#gvg4	722,{
+//OnTouch:
+set .@GID, GetCastleData("prtg_cas03",1);
+set .npcname$,"^FF0000[ลงทะเบียนกิลด์วอร์]^000000";
+if ( getgmlevel() > 0 ) {
+mes .npcname$;
+if ( $@GuildEvent4 == 0 ) {
+mes "ลงทะเบียนกิลด์วอร์";
+mes "บ้าน Fadhgridh";
+next;
+if ( select ( "^0000FF-^000000 ลงทะเบียน:" ) == 1 ) {
+
+New_Name:
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 1 ครับ";
+next;
+input .@GuildName_7;
+set .@GuildName_7$,getguildname(.@GuildName_7);
+next;
+mes .npcname$;
+mes "กรอกรหัสกิลด์ที่ 2 ครับ";
+next;
+input .@GuildName_8;
+set .@GuildName_8$,getguildname(.@GuildName_8);
+next;
+mes .npcname$;
+mes " ";
+mes "1) "+.@GuildName_7$;
+mes "2) "+.@GuildName_8$;
+next;
+menu "^0000FF-^000000 ตกลง",-,"^FF0000-^000000 ยกเลิก",New_Name;
+
+mes .npcname$;
+setarray $@GuildName$[7],.@GuildName_7$,.@GuildName_8$;
+set $@GuildEvent4,1;
+announce "[ กิลด์ "+.@GuildName_7$+" vs กิลด์ "+.@GuildName_8$+" บ้าน Fadhgridh ]",bc_all,0x00FFFF;  
+close;
+}
+} else {
+
+next;
+if ( select ( "^0000FF-^000000 ดูกิจกรรม:^FF0000-^000000 ยกเลิกกิจกรรม" ) == 1 )
+//warp "gvg_cas04",9,288;
+warp "prtg_cas03",45,100;
+else {
+set $@GuildEvent4,0;
+close;
+}
+}
+} else if ( $@GuildEvent4 == 1 && ( strcharinfo(2) == $@GuildName$[7] || strcharinfo(2) == $@GuildName$[8] ) ) {
+if( agitcheck() ) { 
+//warp "gvg_cas04",225,25;
+warp "prtg_cas03",168,11;
+}
+}
+close;
+OnRecvCastleA03:
+	FlagEmblem GetCastleData("prtg_cas03",1);
+	end;
+}
+
+-	script	จัดการกิลด์วอร์	111,{
+OnAtcommand:
+if (getgmlevel() < 99) end;
+main:
+menu
+"- Reset ระบบทำทุกครั้งก่อนเปิด",L_Reset,
+"- เปิดวอร์1-1",L_Start1;
+	L_Reset:
+	mes "ต่อไป..";
+	atcommand "@agitstart";
+	next;
+	mes "ต่อไป.....";
+	atcommand "@agitend";
+	next;
+	disablenpc "aldega1";
+	disablenpc "aldega2";
+	//disablenpc "aldega3";
+	disablenpc "aldega4";
+	disablenpc "aldega5";
+
+	disablenpc "gefga1";
+	disablenpc "gefga2";
+	//disablenpc "gefga3";
+	disablenpc "gefga4";
+	disablenpc "gefga5";
+
+	disablenpc "payga1";
+	disablenpc "payga2";
+	//disablenpc "payga3";
+	disablenpc "payga4";
+	disablenpc "payga5";
+
+	disablenpc "prtga1";
+	disablenpc "prtga2";
+	//disablenpc "prtga3";
+	disablenpc "prtga4";
+	disablenpc "prtga5";
+
+	set $Alde1, 0;
+	set $Alde2, 0;
+	set $Alde3, 0;
+	set $Alde4, 0;
+	set $Alde5, 0;
+
+	set $Geff1, 0;
+	set $Geff2, 0;
+	set $Geff3, 0;
+	set $Geff4, 0;
+	set $Geff5, 0;
+
+	set $Payo1, 0;
+	set $Payo2, 0;
+	set $Payo3, 0;
+	set $Payo4, 0;
+	set $Payo5, 0;
+
+	set $Pron1, 0;
+	set $Pron2, 0;
+	set $Pron3, 0;
+	set $Pron4, 0;
+	set $Pron5, 0;
+
+	close;
+	end;
+
+L_Start1:
+	mes "^FF0000ระบบกิลด์วอร์ 1-1^000000";
+	atcommand "@load";
+	goto wars;
+	close;
+	end;
+
+wars:
+	if (agitcheck() == 0){
+	agitstart;
+	}
+	announce "[ สงคราม WOE 1-1 เหลือ Of Emperium เริ่มแล้ว ]",0;
+	sleep2 55*60*1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 5 นาทีสุดท้าย ]",0;
+	sleep2 1*60*1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 4 นาทีสุดท้าย ]",0;
+	sleep2 1*60*1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 3 นาทีสุดท้าย ]",0;
+	sleep2 1*60*1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 2 นาทีสุดท้าย ]",0;
+	sleep2 1*60*1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 1 นาทีสุดท้าย ]",0;
+	sleep2 50000;
+	announce "[ สงคราม WOE 1-1 เหลือ 10 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 9 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 8 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 7 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 6 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 5 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 4 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 3 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 2 วินาทีสุดท้าย ]",0;
+	sleep2 1000;
+	announce "[ สงคราม WOE 1-1 เหลือ 1 วินาทีสุดท้าย ]",0;
+	if (agitcheck() == 1){
+	agitend;
+
+	announce "[ สงคราม WOE 1-1 จบลงแล้ว ]",0;
+	end;
+	}
+	end;
+OnInit:
+bindatcmd "gvg1-1",strnpcinfo(3)+"::OnAtcommand";
+end;
+}

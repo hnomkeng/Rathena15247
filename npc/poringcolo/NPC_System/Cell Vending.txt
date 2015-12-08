@@ -1,0 +1,36 @@
+-	script	CELLVending#1	-1,{
+	OnInit:
+	setcell "oasis",22,298,297,162,cell_novending,1;
+	end;	
+}
+-	script	CELLVending#2	-1,{
+	OnInit:
+	setcell "oasis",22,162,73,21,cell_novending,1;
+	end;	
+}
+-	script	CELLVending#3	-1,{
+	OnInit:
+	setcell "oasis",74,113,297,21,cell_novending,1;
+	end;	
+}
+-	script	CELLVending#4	-1,{
+	OnInit:
+	setcell "oasis",98,298,297,21,cell_novending,1;
+	end;	
+}
+
+-	script	โซนตั้งร้าน::noat	4_BULLETIN_BOARD2,{
+end;
+
+Oninit:
+waitingroom "โซนขายของ",0;
+end;
+}
+oasis,99,112,4	duplicate(noat)	โซนตั้งร้าน#01	4_BULLETIN_BOARD2,0,0
+oasis,72,112,4	duplicate(noat)	โซนตั้งร้าน#02	4_BULLETIN_BOARD2,0,0
+oasis,72,129,4	duplicate(noat)	โซนตั้งร้าน#03	4_BULLETIN_BOARD2,0,0
+oasis,99,129,4	duplicate(noat)	โซนตั้งร้าน#04	4_BULLETIN_BOARD2,0,0
+oasis,72,147,4	duplicate(noat)	โซนตั้งร้าน#05	4_BULLETIN_BOARD2,0,0
+oasis,99,147,4	duplicate(noat)	โซนตั้งร้าน#06	4_BULLETIN_BOARD2,0,0
+oasis,72,163,4	duplicate(noat)	โซนตั้งร้าน#07	4_BULLETIN_BOARD2,0,0
+oasis,99,163,4	duplicate(noat)	โซนตั้งร้าน#08	4_BULLETIN_BOARD2,0,0

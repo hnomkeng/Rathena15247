@@ -1,0 +1,26 @@
+payg_cas01,0,0,0	script	#gvgbasic	-1,{
+end;
+
+OnPCLoadMapEvent:
+	getmapxy(.@map$,.@x,.@y,0,strcharinfo(0));
+	if(.@map$ == payg_cas01) {
+		if (juti > 0) {
+			dispbottom "[ผู้ดูแลทางเข้า]";
+			dispbottom "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่ไม่เคยจุติ เท่านั้น";
+			end;
+		}
+	}
+	if(readparam(13) > 100) goto no100;
+	if(readparam(14) > 100) goto no100;
+	if(readparam(15) > 100) goto no100;
+	if(readparam(16) > 100) goto no100;
+	if(readparam(17) > 100) goto no100;
+	if(readparam(18) > 100) goto no100;
+	end;
+	no100:	
+		dispbottom "[ผู้ดูแลทางเข้า]";
+		dispbottom "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่มี Status ไม่เกิน 100 เท่านั้น";
+	end;
+}
+payg_cas01	mapflag	loadevent
+prtg_cas01	mapflag	loadevent

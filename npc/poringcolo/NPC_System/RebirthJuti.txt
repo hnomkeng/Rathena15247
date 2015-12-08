@@ -1,0 +1,57 @@
+oasis,166,109,3	script	เทพจุติ	4_F_ARUNA_POP,{
+mes "[เทพจุติ]";
+mes "การจุติคือการกลับไปเกิดใหม่";
+mes "ตัวละครจะกลับไปเลเวล 1 ใหม่";
+mes "แต่ค่าสเตตัสจะยังคงเดิมอยู่";
+mes "สามารถเก็บสเตตัสพ้อยต์เพื่ออัพสเตตัสเพิ่มได้อีก";
+next;
+mes "[^0015FFเงือนไขจุติ^000000]";
+mes "1. TCG Card จำนวน ^FF000015^000000 ea สำหรับคลาส3";
+mes "2. เงิน ^FF000075,000,000 z^000000 สำหรับคลาส3";
+next;
+menu 
+	"ทำการจุติกลับไป Level 1",j_juti,
+	"ยกเลิก",j_no;
+
+j_juti:
+if(juti >= $jutifree){
+	if ((BaseLevel != 150) || (countitem(7227) < 15) || (Zeny < 75000000)){
+		mes "^FF0000คุณมีความต้องการไม่เพียงพอ^000000";
+		close;
+	}
+	else {
+		delitem 7227,15;
+		set Zeny,Zeny-75000000;
+		set BaseLevel,BaseLevel + -149;
+		set juti,juti + 1;
+		announce "[เทพจุติ] : " + strcharinfo(0) + " ได้ทำการจุติแล้ว",0,0xD5006B;
+		mes "[เทพจุติ]";
+		mes "การจุติเสร็จสมบูรณ์";
+		dispbottom "[เทพจุติ]คุณจุติไปแล้ว "+ juti +" ครั้ง";
+	}
+} else {
+	if (BaseLevel != 150){
+		mes "การจุติของอาชีพคลาส 3";
+		mes "^FF0000ต้องมี Level 150 เท่านั้น^000000";
+		close;
+	}
+	set BaseLevel,BaseLevel + -149;
+	set juti,juti + 1;
+	announce "[เทพจุติ] : " + strcharinfo(0) + " ได้ทำการจุติแล้ว",0,0xD5006B;
+	mes "[เทพจุติ]";
+	mes "การจุติเสร็จสมบูรณ์";
+	dispbottom "[เทพจุติ]คุณจุติฟรีไปแล้ว "+ juti +" ครั้ง";
+	close;
+}
+
+close;
+
+j_no:
+close;
+end;	
+
+OnInit:
+set $jutifree,20; //จำนวนรอบจุติเลเวลฟรี
+waitingroom "เทพจุติ",0;
+end;
+}

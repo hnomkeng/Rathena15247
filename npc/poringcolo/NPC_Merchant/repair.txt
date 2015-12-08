@@ -1,0 +1,94 @@
+shop_in01,101,389,4	script	ช่างซ่อม	86,{
+	callfunc "repairmain","Repairman";
+	end;
+	
+	OnInit:
+	waitingroom "ช่างซ่อม",0;
+	end;
+}
+
+function	script	repairmain	{
+	set .@repairprice,5000;
+	mes "["+getarg(0)+"]";
+	mes "เป็นอย่างไงบ้าง!";
+	mes "ท่านต้องการให้ข้า";
+	mes "ซ่อมไอเทมใช่มั้ยล่ะ?";
+	mes "งั้นก็มาถูกที่แล้ว";
+	mes "ส่งไอเทมมาให้ข้า เด่วจะจัดการให้!";
+	next;
+	switch(select("ใช่แล้ว, ข้ามีไอเทมที่ชำรุด...:ไม่ล่ะ ไม่ต้อง.")) {
+	case 1:
+		set .@checkitem,1;
+		while (1) {
+			if (getbrokenid(.@checkitem) == 0) {
+				break;
+			}
+			set .@checkitem,.@checkitem+1;
+		}
+		set .@checkitem,.@checkitem-1;
+		if (!.@checkitem) {
+			mes "["+getarg(0)+"]";
+			mes "ว้าว, ท่านรักษาไอเทมได้ดีเลยทีเดียว!";
+			mes "ไม่มีไอเทมที่เสียหายเลยหรอไง!";
+			next;
+			mes "["+getarg(0)+"]";
+			mes "ถ้าทุกๆคนเหมือนกับท่านหมด, ข้าก็ว่างงานกันพอดีล่ะสิ!! ฮ่าฮ่าฮ่า~!";
+			close;
+		}
+		mes "["+getarg(0)+"]";
+		mes "อืมมม...";
+		mes "ข้ารู้แล้ว...";
+		mes "มีไอเทมชำรุดในตัวท่าน,";
+		mes "" + .@checkitem + ".";
+		mes "ท่านต้องการจะซ่อมแซมไอเทมไหมล่ะ?";
+		next;
+		set .@totalcost,.@repairprice*.@checkitem;
+		mes "["+getarg(0)+"]";
+		mes "ค่าใช้จ่ายในการซ่อม " + .@repairprice + " Zeny. ในการซ่อมไอเทมนี้จะต้องใช้เงินจำนวน " + .@totalcost + " Zeny! ท่านอยากจะซ่อมมันไหม?";
+		next;
+		switch(select("ซ่อม:ไม่ล่ะ")) {
+		case 1:
+			if (Zeny < .@totalcost) {
+				mes "["+getarg(0)+"]";
+				mes "โว้ว โว้ว...";
+				mes "เช็คกระเป๋า ท่านก่อนว่าจะมีเงินจ่าย ไหม?! ข้าไม่สามารถซ่อมให้ท่านได้หรอก เพราะท่านตังไม่พอ.";
+				close;
+			}
+			set .@checkitem2,1;
+			while (1) {
+				if (getbrokenid(.@checkitem2) == 0) {
+					break;
+				}
+				set .@checkitem2,.@checkitem2+1;
+			}
+			set .@checkitem2,.@checkitem2-1;
+			if (.@checkitem == .@checkitem2) {
+				set zeny,zeny-.@totalcost;
+				while (.@checkitem) {
+					repair(.@checkitem);
+					set .@checkitem,.@checkitem-1;
+				}
+				mes "["+getarg(0)+"]";
+				mes "ตกลง! ทุกอย่างเสร็จแล้ว. ขณะนี้, จะต้องระวังเรื่องเล็กๆน้อยๆ. ไอเทมมันมีชีวิตนะ ท่านรู้ไหม.";
+				close;
+			}
+			else {
+				mes "["+getarg(0)+"]";
+				mes "ฮึมม? มีบางสิ่งผิด... ของสวมใส่ของท่าน จำเป็นต้องซ่อมซะก่อน แล้วค่อยกลับมาหาข้า.";
+				close;
+			}
+		case 2:
+			mes "["+getarg(0)+"]";
+			mes "ถ้าเป็นไปได้ ท่านจะได้ซ่อมไอเทมเหล่านั้นในไม่ช้านี้!";
+			close;
+		}
+	case 2:
+		mes "["+getarg(0)+"]";
+		mes "เฮ่อออ...";
+		mes "ถ้าท่านไม่มี";
+		mes "ไอเทมจะให้ข้าซ่อมแซม";
+		mes "อย่ามายุ่งกับข้า";
+		mes "ข้ามีไอเทมต้องซ่อมแซมเยอะ.";
+		close;
+	}
+}

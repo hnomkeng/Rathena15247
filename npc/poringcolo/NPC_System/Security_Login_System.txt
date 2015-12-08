@@ -1,0 +1,179 @@
+//(=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)
+//(                 ( C ) 2015 - 2016  Survival's  Development  present		
+//(     ุ_______                                                   ุ__ ุ                                ุ__     ุ__
+//(   /\     ____\                                                 \__\                             /\   \  /\ _\
+//(   \  \   \____  ___ ุ     ___  __    ุ___  __      ุ__    __    __      ุ__    ุ ___ ุ\  \   \\/_ /  ______
+//(    \  \____   \/\    \   / \   \/\   \/  __\/\  \   /   /\ /\   \ /\  \   /   /\ /  __  .\\  \   \     /\   ___/ 
+//(      \_____\   \ \    \_\_\   \ ุ \    /__/\  \  \/   /  /\  \  ุ \  \  \/   /  / \  \_.\   \\  \   \   \ ___   \
+//(       /\_______\ \________\  \__\      \  \__ /  /   \  \_ \  \__ /  / \  \__/ \   \\  \__\  /\_____\
+//(       \/_______/\/________/\/__ /       \/___\/      \___/\/___\/    \/__/\/ _/  \/__ /  \/_____/
+//(								
+//(	                          Security Login System                                 	
+//(	                     New Version 2015, by Survival's         
+//(								Open Release 1.00               	    	   		
+//(					
+//(=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)
+
+-	script	Lock	-1,{
+OnPCLoginEvent:
+if(#SLS_OFF){
+	message strcharinfo(0), "[SLS] ทีมงานแนะนำให้ใช้ระบบ SLS เพื่อป้องกันไอเท็มของตัวท่านเอง.";
+	message strcharinfo(0), "[SLS] ระบบ SLS ถูกปิดการใช้งาน !!";
+//	callfunc("freeitem_day");
+	end;
+}
+if(#SLS)
+{
+		//================================
+		sc_start 47,30000000,1;		// Trick Dead
+		sc_start SC_FREEZE,30000000,10;	// Freeze
+		setoption 0x40;		// Perfect Hide
+		//================================
+		message strcharinfo(0), "[SLS] กรุณาใส่รหัส SLS เพื่อทำการปลดล็อคตัวละครของท่าน !!";
+		input @SLS;
+		if(#SLS == @SLS) {
+			//================================
+			if (checkoption(0x40)) setoption 0x40,0; // Remove Perfect Hide
+			sc_end SC_FREEZE;	// Remove Freeze
+			sc_end 47;		// Remove Trick Dead
+			//================================
+			message strcharinfo(0), "[SLS] คุณได้ปลดล็อค SLS เรียบร้อยแล้ว !!";
+//			callfunc("freeitem_day");
+		} else {
+			atcommand strcharinfo(0) + " @kick " + strcharinfo(0);
+			set @SLS,0;
+			end;
+		}
+} else {
+//	callfunc("freeitem_day");
+	set @npc$,"[^0000FF Security Login System ^000000]";
+	mes @npc$;
+	mes "ยินดีต้อนรับผู้เล่นใหม่ เข้าสู่โลก Ragnarok Online ค่ะ";
+	next;
+	mes @npc$;
+	mes "นี่คือระบบที่เรียกว่า";
+	mes "^0000FF' Security Login System '^000000";
+	mes "มีวัตถุประสงค์เพื่อ ป้องกันผู้เล่นมิจฉาชีพ";
+	mes "Hack ID ของเราไปได้";
+	next;
+	if(select(" - ติดตั้ง Security Login System"," - ยกเลิก") == 2) close;
+	LSetSLS:
+	mes @npc$;
+	mes "กรุณาตั้ง Password";
+	mes "ของท่านเป็นตัวเลข 4 หลัก";
+	mes "^FF0000( 1000 - 9999 )^000000";
+	mes "(ใส่เลข 0 เพื่อเป็นการยกเลิก)";
+	next;
+	input @SLS;
+	if(@SLS)
+	{
+		if(@SLS > 9999)
+		{
+				mes @npc$;
+				mes "รหัสผ่าน SLS ของท่านมากกว่า 4 หลัก";
+				next;
+				goto LSetSLS;
+		}
+		if(@SLS < 1000)
+		{
+				mes @npc$;
+				mes "รหัสผ่าน SLS ของท่านน้อยกว่า 4 หลัก";
+				next;
+				goto LSetSLS;
+		}
+		mes @npc$;
+		mes "รหัสผ่าน SLS ของท่าน คือ [^FF0000 "+@SLS+" ^000000]";
+		mes "กรุณาใส่ตัวเลข 4 หลักอีกครั้ง !! เพื่อเป็นการยืนยัน";
+		next;
+		input @ReSLS;
+		if(@SLS == @ReSLS)
+		{
+			set #SLS,@SLS;
+			mes @npc$;
+			mes "ขอบคุณที่ใช้บริการ ";
+			mes "^0000FF' Security Login System '^000000";
+			mes "รหัสผ่าน SLS ของท่านคือ [^FF0000 "+#SLS+" ^000000]";
+			specialeffect2(18);
+		} else {
+			mes @npc$;
+			mes "รหัสผ่าน SLS ของท่านไม่ถูกต้อง !!";
+			next;
+			goto LSetSLS;
+		}
+	} 
+	close2;
+	set @SLS,0;
+	end;
+}
+end;
+
+	OnAtcommand:
+	mes @npc$;
+	mes "ระบบ Security Login System";
+	next;
+	menu
+	"เปิด / ปิด ระบบ Security Login System",system,
+	"รีเซ็ตค่า ระบบ Security Login System",reset;
+	
+	system:
+	if(#SLS_OFF)	set #SLS_OFF,0;	else		set #SLS_OFF,1;
+	if(#SLS_OFF)	set @Switch$,"OFF";	else	set @Switch$,"ON";
+	message strcharinfo(0), "Security Login System [ "+@Switch$+" ]";
+	end;
+	
+	reset:
+	if(!#SLS)
+	{
+		message strcharinfo(0), "[Lock] ไม่สามารถดำเนินการได้ เนื่องจากคุณยังไม่ได้ติดตั้งรหัสผ่าน SLS";
+		end;
+	}
+	mes @npc$;
+	mes "ยินดีต้อนรับเข้าสู่บริการ";
+	mes "^FF0000' SLS Reset Password '^000000";
+	mes "กรุณาใส่รหัสผ่าน SLS ของท่าน เพื่อเป็นการยืนยัน";
+	mes "(ใส่เลข 0 เพื่อเป็นการยกเลิก)";
+	LResetAgain:
+	next;
+	input @SLS;
+	if(@SLS)
+	{
+		if(#SLS != @SLS)
+		{
+			mes @npc$;
+			mes "รหัสผ่าน SLS ของท่านไม่ถูกต้อง !!";
+			close;
+		}
+		specialeffect2(18);
+		set #SLS,0;
+		set #SLS_OFF,0;
+		mes @npc$;
+		mes "ระบบได้ทำการยกเลิก !!";
+		mes "รหัสผ่าน SLS ของท่านแล้ว";
+	}
+	close2;
+	set @SLS,0;
+	end;
+	
+	OnInit:
+	bindatcmd "sls",strnpcinfo(3)+"::OnAtcommand";
+	end;
+}
+
+function	script	freeitem_day	{
+	sleep2 100;
+	if(#day==gettime(5)+gettime(6)+gettime(7)) return;
+	mes "[^0000FF Free Item Day ^000000]";
+	mes "คุณต้องการรับไอเทม Free ประจำวันหรือไม่";
+	mes "^FF0000( สามารถรับได้ 1 ตัวละคร / 1 ID )^000000";
+	next;
+	if(select(" - ยกเลิก"," - รับไอเทม Free ประจำวัน") == 1){
+		close2;
+		return;
+	}
+	setarray $@freeitem_id[0],12002,12215,12216,12208,12210;		// รหัส Item Free ประจำวัน
+	specialeffect2(18);
+	getitem $@freeitem_id[rand(getarraysize($@freeitem_id))],1;
+	set #day,gettime(5)+gettime(6)+gettime(7);
+	close2;
+return;
+}

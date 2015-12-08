@@ -1,0 +1,19 @@
+-	script	acc	-1,{
+OnMinute00:
+announce "ROClub Ragnarok Online, Juti EP12.1.",8;
+announce "ยินดีต้อนรับ สู่เซิฟเวอร์ ROClub EP 12.1 ...",8;
+end;
+
+OnMinute15:
+announce "การซื้อขายแลกเปลี่ยนเงินและไอเท็มในเกมส์ ในรูปแบบของเงินจริง.",8;
+announce "ถ้ามีการโกงเกิดขึ้น ทีมงานไม่สามารถช่วยเหลือท่านได้.",8;
+end;
+
+OnMinute30:
+announce "ห้ามส่งเสริมหรือใช้โปรแกรมช่วยเหลือการเล่นใดๆ ที่ไม่ใช่ Client ซึ่งมาจาก ROClub Ragnarok Online.",8;
+end;
+
+OnMinute45:
+announce "โปรดระวังมิจฉาชีพปลอมแปลงเป็นทีมงาน หรือเพื่อนสนิทเพื่อหลอกถาม ข้อมูลของผู้เล่น.",8;
+end;
+}

@@ -1,0 +1,77 @@
+// วาปบ้านวอร์
+oasis,199,89,0	script	 #basic	WARPNPC,1,1,{
+	if (juti == 0) {
+		warp "payg_cas01",214,48;
+		end;
+	} else {
+		mes "[ผู้ดูแลทางเข้า]";
+		mes "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่ไม่เคยจุติ เท่านั้น";
+		end;
+	}
+}
+
+oasis,166,52,0	script	 #100	WARPNPC,1,1,{
+	if(readparam(13) > 100) goto no;
+	if(readparam(14) > 100) goto no;
+	if(readparam(15) > 100) goto no;
+	if(readparam(16) > 100) goto no;
+	if(readparam(17) > 100) goto no;
+	if(readparam(18) > 100) goto no;
+	
+	warp "prtg_cas01",99,32;
+	end;
+
+	no:	
+		mes "[ผู้ดูแลทางเข้า]";
+		mes "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่มี Status ไม่เกิน 100 เท่านั้น";
+	end;
+}
+
+oasis,155,74,0	script	 #200	WARPNPC,1,1,{
+	if(readparam(13) > 200) goto no;
+	if(readparam(14) > 200) goto no;
+	if(readparam(15) > 200) goto no;
+	if(readparam(16) > 200) goto no;
+	if(readparam(17) > 200) goto no;
+	if(readparam(18) > 200) goto no;
+	
+	warp "prtg_cas05",17,235;
+	end;
+
+	no:	
+		mes "[ผู้ดูแลทางเข้า]";
+		mes "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่มี Status ไม่เกิน 200 เท่านั้น";
+	end;
+}
+
+oasis,154,58,0	script	 #400	WARPNPC,1,1,{
+	if(readparam(13) > 400) goto no;
+	if(readparam(14) > 400) goto no;
+	if(readparam(15) > 400) goto no;
+	if(readparam(16) > 400) goto no;
+	if(readparam(17) > 400) goto no;
+	if(readparam(18) > 400) goto no;
+	
+	warp "payg_cas04",252,271;
+	end;
+
+	no:	
+		mes "[ผู้ดูแลทางเข้า]";
+		mes "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่มี Status ไม่เกิน 400 เท่านั้น";
+	end;
+}
+
+oasis,199,63,0	script	 #800	WARPNPC,1,1,{
+	warp "aldeg_cas02",88,163;
+}
+
+oasis,132,62,0	script	 #baby	WARPNPC,1,1,{
+	if ((Class==4023) || (Class==4024) || (Class==4025) || (Class==4026) || (Class==4027) || (Class==4028) || (Class==4029) || (Class==4030) || (Class==4031) || (Class==4032) || (Class==4033) || (Class==4034) || (Class==4035) || (Class==4036) || (Class==4037) || (Class==4038) || (Class==4039) || (Class==4040) || (Class==4041) || (Class==4042) || (Class==4043) || (Class==4044) || (Class==4045) || (Class==4096) || (Class==4097) || (Class==4098) || (Class==4099) || (Class==4100) || (Class==4101) || (Class==4102) || (Class==4103) || (Class==4104) || (Class==4105) || (Class==4106) || (Class==4107) || (Class==4108)) {
+		warp "gefg_cas01",34,140;
+		end;
+	} else {
+		mes "[ผู้ดูแลทางเข้า]";
+		mes "เสียใจด้วย ปราสาทนี้สำหรับผู้ที่เป็นเบบี้ เท่านั้น";
+		end;
+	}
+}

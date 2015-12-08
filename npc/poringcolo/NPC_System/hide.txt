@@ -1,0 +1,19 @@
+morocc,0,0,0	script	เข้าชมการต่อสู้	117,{
+	mes .@npc$,"[พนักงาน]";
+	mes .@npc$;
+	mes "เลือกรายการ";
+	switch (select("- บ้านหลังที่ 1", "บ้าน 2", "บ้าน 3")) {
+	case 1:
+		setguest getcharid(0), "prontera"; // ตรงนี้คือคำสั่งมุด
+		warp "prontera", 0, 0;
+		break;
+	case 2:
+		setguest getcharid(0), "prontera"; // ตรงนี้คือคำสั่งมุด
+		warp "prontera", 0, 0;
+		break;
+	case 3:
+		setguest getcharid(0), "prontera"; // ตรงนี้คือคำสั่งมุด
+		warp "prontera", 0, 0;
+		break;
+	}
+}

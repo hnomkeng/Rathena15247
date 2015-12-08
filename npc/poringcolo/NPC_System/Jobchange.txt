@@ -1,0 +1,534 @@
+louyang,218,122,4	script	เปลี่ยนอาชีพ	4_F_VALKYRIE2,{
+if(class==0) goto L_changejob;
+
+no:
+mes "[Super Novice]";
+mes "ถ้าท่านต้องการเปลี่ยน";
+mes "ค่อยกลับมาหาข้าใหม่";
+close;
+
+novice:
+mes "[Super Novice]";
+mes "เจ้าเป็น Novice อยู่แล้วหนิ...";
+close;
+
+L_changejob:
+mes "^3EA99F-สวัดดีฮะนี่คือ NPC บริการเปลี่ยนอาชีพฮะ^000000";
+mes "^3EA99F-คุณ^000000 ^48CCCD" + strcharinfo(0) +"^000000";
+mes "^82CAFA-เชิญเลือกอาชีพที่จะเล่นได้เลย^000000 .";
+menu 
+	"^9CBE05- Super Novice^000000",SuperNovice,
+	"^052ABE- Class 2-2, 2-1^000000",episode5;
+	//"^BE3305- Hi-Class^000000",hiclass;
+
+SuperNovice:
+setoption 0; 
+jobchange 23;
+set BaseLevel,99;
+set JobLevel,99;
+ResetSkill; 
+ResetStatus;
+goto L_close;
+	
+episode5:
+menu "Knight",knight,"Priest",Priest,"Wizard",Wizard,"Blacksmith",Blacksmith,"Hunter",Hunter,"Assasin",Assasin,"Crusader",Crusader,"Monk",Monk,"Sage",Sage,"Rogue",Rogue,"Alchemist",Alchemist,"Bard & Dancer",BardDancer;
+
+knight:
+setoption 0; 
+jobchange 7;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allkn,$allkn+1;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1001,1,0;
+goto L_close;
+
+Priest:
+setoption 0; 
+jobchange 8;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allpr,$allpr+1;
+skill 142,1,0;
+skill 156,1,0;
+skill 1014,1,0;
+goto L_close;
+
+Wizard:
+setoption 0; 
+jobchange 9;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allwi,$allwi+1;
+skill 142,1,0;
+skill 157,1,0;
+skill 1006,1,0;
+goto L_close;
+
+Blacksmith:
+setoption 0; 
+jobchange 10;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allws,$allws+1;
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+skill 1012,1,0;
+skill 1013,1,0;
+goto L_close;
+
+Hunter:
+setoption 0; 
+jobchange 11;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allsn,$allsn+1;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 499,1,0;
+skill 1009,1,0;
+goto L_close;
+
+Assasin:
+setoption 0; 
+jobchange 12;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allass,$allass+1;
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 1003,1,0;
+skill 1004,1,0;
+goto L_close;
+
+Crusader:
+setoption 0; 
+jobchange 14;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allpa,$allpa+1;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1002,1,0;
+goto L_close;
+
+Monk:
+setoption 0; 
+jobchange 15;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allch,$allch+1;
+skill 142,1,0;
+skill 156,1,0;
+skill 1015,1,0;
+skill 1016,1,0;
+goto L_close;
+
+Sage:
+setoption 0; 
+jobchange 16;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allpro,$allpro+1;
+skill 142,1,0;
+skill 157,1,0;
+skill 1007,1,0;
+switch(select("ธาตุน้ำ:ธาตุลม:ธาตุดิน:ธาตุไฟ")){
+	case 1:
+		skill 1008,1,0;
+		break;
+	
+	case 2:
+		skill 1019,1,0;
+		break;
+	
+	case 3:
+		skill 1017,1,0;
+		break;
+	
+	case 4:
+		skill 1018,1,0;
+		break;
+}
+goto L_close;
+
+Rogue:
+setoption 0; 
+jobchange 17;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allst,$allst+1;
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 146,1,0;
+goto L_close;
+
+Alchemist:
+setoption 0; 
+jobchange 18;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allcre,$allcre+1;
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+//skill 238,1,0;
+goto L_close;
+
+BardDancer:
+if(sex!=1) goto Dancer;
+setoption 0; 
+jobchange 20;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allcl,$allcl+1;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+goto L_close;
+
+Dancer:
+setoption 0; 
+jobchange 20;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,50;
+ResetSkill; 
+ResetStatus;
+set $allgy,$allgy+1;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+goto L_close;
+
+hiclass:
+menu "Lord Knight",L_knight,"High Priest",L_priest,"High Wizard",L_wizard,"Whitesmith",L_whitesmith,"Sniper",L_sniper,"Assasin Cross",L_ass,"Paladin",L_paladin,"Champion",L_champion,"Professor",L_professor,"Stalker",L_stalker,"Creator",L_creator,"Clown & Gypsy",L_clown;
+
+L_knight:
+setoption 0; 
+jobchange 4008;
+set skillpoint,58; 
+set BaseLevel,99;
+set JobLevel,70;
+ResetSkill; 
+ResetStatus;
+set $allkn,$allkn+1;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+goto L_close;
+
+L_priest: 
+setoption 0; 
+jobchange 4009;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allpr,$allpr+1;
+skill 142,1,0;
+skill 156,1,0;
+skill 1014,1,0;
+goto L_close;
+
+L_wizard: 
+setoption 0; 
+jobchange 4010;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allwi,$allwi+1;
+skill 142,1,0;
+skill 157,1,0;
+skill 1016,1,0;
+goto L_close;
+
+L_whitesmith: 
+setoption 0; 
+jobchange 4011;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allws,$allws+1;
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+skill 1012,1,0;
+skill 1013,1,0;
+goto L_close;
+
+L_sniper: 
+setoption 0; 
+jobchange 4012;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allsn,$allsn+1;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+skill 1009,1,0;
+goto L_close;
+
+L_ass: 
+setoption 0; 
+jobchange 4013;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allass,$allass+1;
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 1003,1,0;
+skill 1004,1,0;
+goto L_close;
+
+L_paladin:
+setoption 0; 
+jobchange 4015;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allpa,$allpa+1;
+skill 142,1,0;
+skill 144,1,0;
+skill 145,1,0;
+skill 146,1,0;
+skill 1002,1,0;
+goto L_close;
+
+L_champion:
+setoption 0; 
+jobchange 4016;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allch,$allch+1;
+skill 142,1,0;
+skill 156,1,0;
+skill 1015,1,0;
+skill 1016,1,0;
+goto L_close;
+
+L_professor: 
+setoption 0; 
+jobchange 4017;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allpro,$allpro+1;
+skill 142,1,0;
+skill 157,1,0;
+skill 1007,1,0;
+goto L_close;
+
+L_stalker:
+setoption 0; 
+jobchange 4018;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allst,$allst+1;
+skill 142,1,0;
+skill 149,1,0;
+skill 150,1,0;
+skill 151,1,0;
+skill 152,1,0;
+skill 146,1,0;
+goto L_close;
+
+L_creator: 
+setoption 0; 
+jobchange 4019;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allcre,$allcre+1;
+skill 142,1,0;
+skill 153,1,0;
+skill 154,1,0;
+skill 155,1,0;
+skill 238,1,0;
+goto L_close;
+
+L_clown:
+if(sex!=1) goto L_gypsy;
+setoption 0; 
+jobchange 4020;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allcl,$allcl+1;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+goto L_close;
+
+L_gypsy:
+setoption 0; 
+jobchange 4020;
+set skillpoint,58; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 69;
+ResetSkill; 
+ResetStatus;
+set $allgy,$allgy+1;
+skill 142,1,0;
+skill 147,1,0;
+skill 148,1,0;
+goto L_close;
+
+
+L_suno: 
+setoption 0; 
+jobchange 23;
+set skillpoint,9; 
+set BaseLevel,BaseLevel + 98;
+set JobLevel,JobLevel + 98;
+ResetSkill; 
+ResetStatus;
+set $allsuno,$allsuno+1;
+skill 142,1,0;
+goto L_close;
+
+L_close:
+percentheal 100,100;
+specialeffect2(135);
+specialeffect2(583);
+specialeffect2(587);
+specialeffect2(589);
+specialeffect2(432);
+specialeffect2(622);
+specialeffect2(635);
+cutin "",255;
+close;
+
+OnInit:
+waitingroom "  เปลี่ยนอาชีพ ",0;
+end;
+}
+
+
+
+-	script	Super Novice	729,{
+if(class == 0) goto novice;
+mes "[Super Novice]";
+mes "ท่านต้องการกลับมาเป็น";
+mes "Novice อีกครั้งใช่ไหม";
+next;
+menu 
+"ใช่",yes,
+"ไม่ใช่",no;
+
+
+yes:
+mes "[Super Novice]";
+mes "ถ้าท่านบอกว่าใช่";
+mes "ข้าก็จะเปลี่ยนให้เดี๋ยวนี้...";
+next;
+mes "[Super Novice]";
+mes "โอมมม เพรี้ยง !!!";
+jobchange 0;
+atcommand strcharinfo(0) + "@lvup -99";
+atcommand strcharinfo(0) + "@joblvup -99";
+resetstatus;
+resetskill;
+specialeffect2(411);
+next;
+mes "[Super Novice]";
+mes "เจ้าได้สิ่งที่เจ้าต้องการแล้ว...";
+close;
+
+
+
+no:
+mes "[Super Novice]";
+mes "ถ้าท่านต้องการเปลี่ยน";
+mes "ค่อยกลับมาหาข้าใหม่";
+close;
+
+
+
+novice:
+mes "[Super Novice]";
+mes "เจ้าเป็น Novice อยู่แล้วหนิ...";
+close;
+
+}

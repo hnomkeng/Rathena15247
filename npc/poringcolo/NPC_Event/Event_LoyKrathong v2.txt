@@ -1,0 +1,146 @@
+/*
+
+  ___     ___				    	  
+ /\  \     /\  \                                   __      
+ \ \  \__\_\  \      __         ___         _\ \     
+  \ \   ____.  \   /'__'\      /' _ '\      /'__ \    
+   \ \  \___/\  \ /\ \_\.\_  /\ \/\ \   /\ \_\.\_  
+    \ \__\  \ \__\\ \__/.\_\\ \ \ \_\ \ \__/.\_\ 
+     \/__/   \/__/ \/__/\/_/ \/_/ /_/ \/__/\/_/ 
+    _____     _______			    	  
+   /\  __'\  /\  ___/			    	  
+   \ \ \ \ \ \ \ \___			    	  
+    \ \ \_\ \ \ \  _/			    	  
+     \ \_____\ \ \_\			   	  
+      \/_____/  \/_/			    	  
+       _______ 				  
+      / _____/                      __		  
+     /\ \   ____    _____       _\ \		  
+     \ \ \  /\__ \  /\  __'\   /' __  \		  
+      \ \ \___\ \ \ \ \ \_\ \/\ \_\. \__	    	  
+       \ \_______\ \ \____\ \ \_ /.\_\	  
+        \/_______/  \/____/\/__/\/_/	  
+
+((=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-))
+((       -- [s] [c] [r] [i] [p] [t] [s] --        ))
+((=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-))
+((-=-=-=-=- Website: www.HandOfGod.ob.tc -=-=-=-=-))
+((=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-))
+((-=-=- E-mail: jack_the_repper@hotmail.com  -=-=-))
+((=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-))
+((-----======= Create By - HandOfGod ========-----))
+((=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-))
+((=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-))
+----------------------------------------------------
+~o~o~o~o~o~o~~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~o~~o~o~
+~o~o~o~o~ NPC: Loy Kra Thong
+~o~o~o~o~o~o~o~o~~o~o~o~o~o~o~o~o~o~o~o~o~o~o~~o~o~
+Edit item:
+	7302,KRATHONG,Krathong,0,200,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "Krathong"; },{},{}
+
+*/
+function	script	Krathong	{
+	getmapxy .@map$,.@x,.@y,0;
+	if( .@x >= 57 && .@x <= 79 && .@y == 72 ) set .@pos,1;
+	else if( .@x >= 67 && .@x <= 95 && .@y == 51 ) set .@pos,2;
+	else end;
+	for( set .@i,1; .@i <= 50; set .@i,.@i+1){
+		if(!getvariableofnpc(getd(".npcwalkKrathong"+.@i)," #Krathong"+.@i)) {
+			set .@npcname$," #Krathong"+.@i;
+			break;
+		}
+		if( .@i == 50 ) end;
+	}
+	if( .@pos == 1 ) movenpc .@npcname$,.@x,.@y-2;
+	else if( .@pos == 2 ) movenpc .@npcname$,.@x,.@y+2;
+	mes "[KraThong]";
+	mes "͸԰ҹ ......";
+	input $@MyWish$;
+	set $@NameKrathong$,strcharinfo(0);
+	donpcevent .@npcname$+"::OnWalk";
+	close;
+}
+
+loykrathong,0,0,0	script	 #Krathong1	3301,{
+end;
+OnWalk:
+	setd ".npcwalk"+strnpcinfo(2),1;
+	set .@npcname$,strnpcinfo(0);
+	waitingroom $@MyWish$,0;
+	setnpcdisplay(strnpcinfo(0), $@NameKrathong$+"#"+strnpcinfo(2));
+	npctalk $@MyWish$;
+	sleep2 1000;
+	set .@walkto_x,114;
+	set .@walkto_y,rand(53,69);
+	npcspeed 1000;
+	sleep2 rand(500,2000);
+	getmapxy .@map$,.@x,.@y,1;
+	if( .@x < 83 ){
+		set .@npcx,114-83+.@x;
+		while( .@x != .@npcx || .@y != .@walkto_y ){
+			getmapxy .@map$,.@x,.@y,1;
+			npcwalkto .@npcx,.@walkto_y;
+			sleep2 250;
+		}
+	}
+	while( .@x != .@walkto_x || .@y != .@walkto_y ){
+		getmapxy .@map$,.@x,.@y,1;
+		npcwalkto .@walkto_x,.@walkto_y;
+		sleep2 250;
+	}
+	globalmes getd(".npcwalk"+strnpcinfo(2));
+	setd ".npcwalk"+strnpcinfo(2),0;
+	setnpcdisplay(" #"+strnpcinfo(2), .@npcname$);
+	delwaitingroom;
+	movenpc strnpcinfo(0),0,0;
+	end;
+}
+loykrathong,95,53,0	duplicate( #Krathong1)	 #Krathong2	3301
+loykrathong,93,53,0	duplicate( #Krathong1)	 #Krathong3	3301
+loykrathong,91,53,0	duplicate( #Krathong1)	 #Krathong4	3301
+loykrathong,89,53,0	duplicate( #Krathong1)	 #Krathong5	3301
+loykrathong,87,53,0	duplicate( #Krathong1)	 #Krathong6	3301
+loykrathong,85,53,0	duplicate( #Krathong1)	 #Krathong7	3301
+loykrathong,83,53,0	duplicate( #Krathong1)	 #Krathong8	3301
+loykrathong,81,53,0	duplicate( #Krathong1)	 #Krathong9	3301
+loykrathong,79,53,0	duplicate( #Krathong1)	 #Krathong10	3301
+loykrathong,77,53,0	duplicate( #Krathong1)	 #Krathong11	3301
+loykrathong,75,53,0	duplicate( #Krathong1)	 #Krathong12	3301
+loykrathong,73,53,0	duplicate( #Krathong1)	 #Krathong13	3301
+loykrathong,71,53,0	duplicate( #Krathong1)	 #Krathong14	3301
+loykrathong,69,53,0	duplicate( #Krathong1)	 #Krathong15	3301
+loykrathong,67,53,0	duplicate( #Krathong1)	 #Krathong16	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong17	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong18	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong19	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong20	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong21	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong22	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong23	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong24	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong25	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong26	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong27	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong28	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong29	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong30	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong31	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong32	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong33	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong34	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong35	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong36	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong37	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong38	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong39	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong40	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong41	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong42	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong43	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong44	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong45	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong46	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong47	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong48	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong49	3301
+loykrathong,0,0,0	duplicate( #Krathong1)	 #Krathong50	3301

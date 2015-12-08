@@ -1,0 +1,116 @@
+-	script	login	-1,{
+OnPCLoginEvent:
+dispbottom "ยินดีต้อนรับผู้เล่นเซิฟเวอร์  RO CLUB Juti";
+dispbottom "ถ้าสงสัยหรือติดปัญหา กด @มือใหม่";
+end;
+
+OnAtcommand:
+mes "[RO CLUB SERVER]";
+mes "ยินดีต้อนรับสู่ Server ของเรา";
+mes "เมือง Oasis จุดรวมของนักสู้ทั้งหลาย";
+mes "เจ้าสงสัยอะไร ?";
+next;
+menu
+	"ข้อมูลเซิฟเวอร์",information,
+	"คำสั่งที่สามารถใช้ได้",cmd,
+	"วิธีหาเงิน",money,
+	"เวลาบอสเกิด",bosstime;
+	
+information:
+mes "^0011FFServer Information^000000";
+mes "Lv.EXP && Job.EXP : ^FF00003000^000000";
+mes "User : ^FF000030^000000";
+mes "Equip : ^FF0000100^000000";
+mes "ETC : ^FF000030^000000";
+mes "Card : ^FF000050^000000";
+mes "MVP : ^FF000010^000000";
+mes "MVP Card : ^FF00007^000000";
+next;
+mes "^0011FFParty information^000000";
+mes "จำนวนสมาชิค : ^FF000026 คน^000000";
+mes "^FF0000มีระบบปาร์ตี้โบนัส^000000";
+next;
+mes "^0011FFWar Of Emperium^000000";
+mes "ทุกวันเวลา : ^FF000013.00-14.00, 18.00-19.00, 20.00-21.00, 23.00-24.00^000000";
+mes "จำนวนสมาชิค : ^FF000026 คน^000000";
+mes "พันธมิตร : ^FF0000ไม่สามารถทำได้^000000";
+mes "ของรางวัล : ^FF0000เป็นแบบสุ่ม^000000";
+end;
+
+cmd:
+mes "@time : เช็คเวลา";
+mes "@mi : เช็คข้อมูลมอนเตอร์";
+mes "@autotrade : ตั้งร้านออฟไลน์";
+mes "@autoloot : เก็บของออโต้";
+mes "@rates : เช็คเรทอัตราต่างๆ";
+mes "@sls : ระบบรหัสความปลอดภัย";
+end;
+
+money:
+mes "^0011FFไอเท็มขายแพง^000000";
+mes "Gemstone ราคา ^FF0000100,000^000000 z";
+mes "Gold Bullion ราคา ^FF00005,000,000^000000 z";
+mes "TCG Card ราคา ^FF0000150,000,000^000000 z";
+next;
+mes "โดยมอนเตอร์ที่ตกไอเท็มมีดังนี้";
+next;
+mes "Gemstone ตกจาก ^FF0000Poring Drops Poporing และ Marin^000000";
+mes "โดยมีโอกาสตก 80%";
+next;
+mes "Gold Bullion ตกจาก ^FF0000Angeling Deviling Arc Angeling Mastering และ Ghosting^000000";
+mes "โดยมีโอกาสตก 60%";
+next;
+mes "TCG Card ตกจาก ^FF0000Boss MVP ทุกตัว^000000";
+mes "โดยมีโอกาสตก 60% แต่สำหรับห้องบอสจะเหลือ 30%";
+next;
+mes "^FF0000สามารถแลกเปลี่ยนได้ที่ NPC รับซื้อของในร้านค้าประจำเซิฟ^000000";
+end;
+
+bosstime:
+mes "Amon Ra ^FF000010-15 ^000000นาที";
+mes "Atroce ^FF000010-15 ^000000นาที";
+mes "Baphomet ^FF000010-15 ^000000นาที";
+mes "Beelzebub ^FF000015-20 ^000000นาที";
+mes "Clone 3 ^FF0000120-180 ^000000นาที";
+mes "Dark Lord ^FF000010-15 ^000000นาที";
+mes "Detale ^FF000015-20 ^000000นาที";
+mes "Doppelganger ^FF000010-15 ^000000นาที";
+mes "Dracula ^FF000010-15 ^000000นาที";
+mes "Drake ^FF000010-15 ^000000นาที";
+mes "Eddga ^FF000010-15 ^000000นาที";
+mes "Evil Snake Lord ^FF000015-20 ^000000นาที";
+mes "Fallen Bishop ^FF000015-20 ^000000นาที";
+mes "Garm ^FF000010-15 ^000000นาที";
+mes "Gloom Under Night ^FF000015-20 ^000000นาที";
+mes "Golden Thief Bug ^FF000010-15 ^000000นาที";
+mes "Gopinich ^FF000015-20 ^000000นาที";
+mes "Ifrit ^FF000090-120 ^000000นาที";
+mes "Incantation Samurai ^FF000015-20 ^000000นาที";
+mes "Kiel D-01 ^FF000015-20 ^000000นาที";
+mes "Stormy Knight ^FF000010-15 ^000000นาที";
+mes "Lady Tanee ^FF000010-15 ^000000นาที";
+mes "Lord of Death ^FF000090-120 ^000000นาที";
+mes "Maya ^FF000010-15 ^000000นาที";
+mes "Mistress ^FF000010-15 ^000000นาที";
+mes "Moonlight Flower ^FF000010-15 ^000000นาที";
+mes "Orc Hero ^FF000010-15 ^000000นาที";
+mes "Orc Lord ^FF000010-15 ^000000นาที";
+mes "Osiris ^FF000010-15 ^000000นาที";
+mes "Pharaoh ^FF000015-20 ^000000นาที";
+mes "Phreeoni ^FF000010-15 ^000000นาที";
+mes "RSX 0806 ^FF000090-120 ^000000นาที";
+mes "Tao Gunka ^FF000060-90 ^000000นาที";
+mes "Turtle General ^FF000015-20 ^000000นาที";
+mes "Valkyrie Randgris ^FF000060-90 ^000000นาที";
+mes "Vesper ^FF000015-20 ^000000นาที";
+mes "White Lady ^FF000010-15 ^000000นาที";
+mes "Ygnizem ^FF000015-20 ^000000นาที";
+mes "Wounded Morroc ^FF0000120-150 ^000000นาที";
+end;
+	
+end;
+
+OnInit:
+bindatcmd "มือใหม่",strnpcinfo(3)+"::OnAtcommand";
+end;
+}

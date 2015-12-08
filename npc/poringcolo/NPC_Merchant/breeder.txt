@@ -1,0 +1,45 @@
+//===== rAthena สคริป =======================================
+//= NPC เช่า ทั่วไป
+//===== โดย: ==================================================
+//= Euphy
+//=====  แปลไทย โดย: ==================================================
+//= Rirakkuma Sergeant Bearing
+//===== เวอร์ชั่น ปัจจุบัน: =====================================
+//= 1.0a
+//===== ใช้กับ: =====================================
+//= โปรเจค โครงการ rAthena
+//===== คำอธิบาย: =========================================
+//=  1 คลิ๊ก  เช่าอัตโนมัติ
+//============================================================
+
+oasis,165,120,4	script	Universal Rental NPC	4_PECOPECO,{
+	if (ismounting()) {
+		message strcharinfo(0),"คุณต้องทำการถอดสิ่งที่คุณกำลังใช้มันอยู่ก่อนเป็นอันดับแรก.";
+		end;
+	} else if ((eaclass()&EAJ_THIRDMASK==EAJ_RANGER) && !countitem(6124)) {
+		if (!checkfalcon() && getskilllv("HT_FALCON") && !checkwug()) {
+			if(select(" ~ เหยี่ยว: ~ หมาป่า")==1) setfalcon;
+			else getitem 6124,1; //Wolf's_Flute
+		} else getitem 6124,1; //Wolf's_Flute
+	} else if ((eaclass()&EAJ_THIRDMASK==EAJ_MECHANIC) && !checkcart() && getskilllv("MC_PUSHCART")) {
+		if (!checkmadogear() && getskilllv("NC_MADOLICENCE")) {
+			if(select(" ~ รถเข็น: ~ มาโดเกียร์")==1) setcart;
+			else setmadogear;
+		} else setcart;
+	} else if (!checkcart() && getskilllv("MC_PUSHCART")) setcart;
+	else if (!checkfalcon() && getskilllv("HT_FALCON") && !checkwug()) setfalcon;
+	else if (!checkriding() && !checkdragon() && getskilllv("KN_RIDING")) {
+		if (eaclass()&EAJ_THIRDMASK==EAJ_RUNE_KNIGHT) setdragon;
+		else setriding;
+	} else if (!checkmadogear() && getskilllv("NC_MADOLICENCE")) setmadogear;
+	else {
+		message strcharinfo(0),"คุณไม่ตอบสนองความต้องการที่จะให้เช่า.";
+		end;
+	}
+	specialeffect2 EF_TEIHIT3;
+	end;
+
+OnInit:
+waitingroom "เช่าสัตว์",0;
+end;
+}

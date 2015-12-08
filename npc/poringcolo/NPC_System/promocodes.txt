@@ -1,0 +1,171 @@
+//===== Custom Script ========================================
+//= Promotional Codes
+//===== By: ==================================================
+//= Arzzzae
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Latest svn
+//===== Description: ========================================= 
+//= Adds 2 custom atcommands. @claim for players to claim
+//= promotional code created by Game Masters. @code is for
+//= administrators to add/view/delete promotional codes.
+//===== Additional Comments: ================================= 
+//= 1.0 - Initial Release.
+//============================================================
+/*CREATE TABLE IF NOT EXISTS `rewardcodelogs` (
+  `code` VARCHAR(10) NOT NULL DEFAULT '',
+  `redeem_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `account_id` INT(11) UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`code`)
+) ENGINE=MYISAM;
+
+CREATE TABLE IF NOT EXISTS `reward_codes` (
+  `code` VARCHAR(10) NOT NULL DEFAULT '',
+  `nameid` INT(11) UNSIGNED NOT NULL DEFAULT '0',
+  `item_name` VARCHAR(45) NOT NULL DEFAULT '',
+  `amount` SMALLINT(6) UNSIGNED NOT NULL DEFAULT '0',
+  `time_created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`code`)
+) ENGINE=MYISAM;
+
+*/
+
+-	script	promoclaim	-1,{
+
+
+OnInit:
+	bindatcmd "reward",strnpcinfo(3)+"::OnClaim";
+	bindatcmd "code",strnpcinfo(3)+"::OnEditCode",99,0;
+	end;
+	
+OnClaim:
+	getinventorylist;
+	set $MAX_INVENTORY, 100;
+	set .@tmp_count, @inventorylist_count;
+	if (.@tmp_count > $MAX_INVENTORY) {
+		mes "ไอเทมในตัวเยอะจนเกินไป ไม่สามารถรับไอเทมได้เกิน ^FF0000" + $MAX_INVENTORY + "^000000 ชนิด";
+		end;
+	}
+	mes "^FF0000*กรุณาอย่ารับรางวัลตอนน้ำหนักเกิน 50%.^000000";
+	mes "ทีมงานจะไม่รับผิดชอบ ^FF0000ถ้าคุณฝ่าฝืน^000000.";
+	mes " ";
+	mes "กรุณาป้อน รหัสรางวัล";
+	input .@pc$;
+	
+	close2;
+	
+	query_sql("SELECT nameid,amount FROM `reward_codes` WHERE `code`='"+escape_sql(.@pc$)+"'", .@item,.@amt);
+	query_sql ("SELECT COUNT(code) FROM `reward_codes` WHERE `code`='"+escape_sql(.@pc$)+"'", .@pcode_exists);
+	if (.@pcode_exists) {
+		getitem .@item,.@amt;
+		dispbottom "รับรางวัลเสร็จสิ้น.";
+		announce "คุณ "+strcharinfo(0)+" ได้ทำการรับรางวัล Reward เรียบร้อยแล้ว",bc_all,0xFF4949;
+		query_sql ("DELETE FROM `reward_codes` WHERE `code`='"+escape_sql(.@pc$)+"'");
+		query_sql("INSERT INTO `rewardcodelogs` (code,redeem_time,account_id) VALUES ('"+.@pc$+"', NOW(), "+getcharid(3)+")");
+		end;
+	}
+	
+	else {
+		dispbottom "รหัสรางวัลไม่ถูกต้อง หรือไม่มีรหัสรางวัลนี้.";
+		end;
+	}
+	
+OnEditCode:
+	
+	menu "Setup a new promotional code",ncode,"View existing codes",vcode,"Delete exisiting codes",dcode,"Cancel",cancel;
+	
+	ncode:
+		
+		set .@clength,10; //Promotional Code Length
+		
+		input .@pcode$;
+		
+			if (getstrlen(.@pcode$)!=.@clength) {
+				dispbottom "Codes must be 10 characters long.";
+				end;
+				}
+				
+			mes "You have entered ^FF0000"+.@pcode$+"^000000 as the code.";
+			mes "Are you sure?";
+			next;
+			if(select("Yes:No, thanks")==2) close;
+			
+			query_sql ("SELECT COUNT(code) FROM `reward_codes` WHERE `code`='"+escape_sql(.@pcode$)+"'", .@pcode_exists);
+			if (.@pcode_exists) {
+				dispbottom "Sorry, that code already exist.";
+				end;
+			}
+			
+			mes "Please set a reward for the players who has entered the code.";
+			input .@reward;
+			next;
+			
+			if (.@reward == 0) {
+				dispbottom "Sorry, that is an invalid item id.";
+				close;
+			}
+			
+			set .@iname$, getitemname(.@reward);
+			mes "Item number ^FF0000"+.@reward+"^000000";
+			mes "is equivalent to ^FF0000"+.@iname$+"^000000.";
+			mes "Are you sure?";
+			next;
+			if(select("Yes:No, thanks")==2) close;
+			
+			
+			mes "How many ^FF0000"+.@iname$+"^000000.?";
+			input .@amount;
+			next;
+			
+			if (.@amount == 0) {
+				dispbottom "Sorry, that is an invalid amount number.";
+				close;
+			}
+			
+			mes "Are you sure?";
+			next;
+			if(select("Yes:No, thanks")==2) close;
+			
+			query_sql ("INSERT INTO `reward_codes` (code,nameid,item_name,amount,time_created) VALUES ('"+.@pcode$+"', "+.@reward+", '"+.@iname$+"', "+.@amount+", NOW())");
+			dispbottom "Promotional Code ^FF0000"+.@pcode$+" ^000000is now activated and the reward is ^FF0000"+.@amount+" "+.@iname$+".";
+			close;
+	
+	vcode:
+	
+		set .@nb, query_sql("SELECT code, item_name, amount FROM `reward_codes` ORDER BY time_created DESC LIMIT 20", .@code$, .@nid$, .@amount);	
+		
+			if (.@nb == 0) {
+			dispbottom "No exisiting codes.";
+			end;
+			}
+		
+			dispbottom "=============================================";
+			dispbottom "==================  LIST CODES  ==================";
+			dispbottom "=============================================";
+			for(set .@i,0; .@i < .@nb; set .@i,.@i+1)
+			dispbottom ""+.@code$[.@i]+" (  Reward: "+.@amount[.@i]+" "+.@nid$[.@i]+"  )";
+			dispbottom "=============================================";
+			end;
+			
+	dcode:
+	
+		input .@dcode$;
+		
+			query_sql ("SELECT COUNT(code) FROM `reward_codes` WHERE `code`='"+escape_sql(.@dcode$)+"'", .@pcode_exists);
+			if (.@pcode_exists) {
+				mes "Would you like to delete that code?";
+				next;
+				if(select("Yes:No, thanks")==2) close;
+				
+				query_sql ("DELETE FROM `reward_codes` WHERE `code`='"+escape_sql(.@dcode$)+"'");
+				dispbottom "Promotional code successfuly deleted.";
+				close;
+			}
+			
+			dispbottom "Promotional code not found.";
+			end;
+	
+	cancel:
+		close;
+}

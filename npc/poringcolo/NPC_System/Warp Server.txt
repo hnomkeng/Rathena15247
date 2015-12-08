@@ -1,0 +1,602 @@
+morocc,0,0,0	script	Warper	-1,{
+set @countman,5;
+set #check,0;
+mes"โปรดเลือกสถานที่ ที่ต้องการไป";
+mes"จากเมนูด้านล่างค่ะ...";
+next;
+menu "^B0A500- [ เมืองหลวง ] ^000000",tower,
+//"^53594E- [ หา Elu / Ori ] ^000000",elumenu,
+//"^00CCFF- [ หาของต่างๆ ] ^000000",cardmenu,
+"^469700- [ จุดรวมกิล ] ^000000",guildmarks;
+
+tower:
+warp "louyang", 216, 99; close;
+
+dualmonk:
+if (BaseJob == 15){
+warp "pvp_y_1-2", 0, 0;  close;
+}
+if (getmapusers("pvp_y_1-2")>2){
+	mes "มีคนเกินจำนวน";
+	close;
+}
+	mes "คุณไม่ได้เป็นอาชีพ Monk";
+	close;
+
+dualmenu:
+	switch(select("Knight:Hunter:Wizard:blacksmith:Assasin")){
+		case 1:
+			if (BaseJob == 7)
+			warp "pvp_y_1-2", 0, 0;  close;
+			break;
+		case 2:
+			if (BaseJob == 11)
+			warp "pvp_y_2-2", 0, 0;  close;
+			break;
+		case 3:
+			if (BaseJob == 9)
+			warp "pvp_y_3-2", 0, 0;  close;
+			break;
+		case 4:
+			if (BaseJob == 10)
+			warp "pvp_y_4-2", 0, 0;  close;
+			break;
+		case 5:
+			if (BaseJob == 12)
+			warp "pvp_y_5-2", 0, 0;  close;
+			break;
+	}
+	close;
+	
+guildmarks:
+switch(select("จุดเซฟ 1:จุดเซฟ 2:จุดเซฟ 3:จุดเซฟ 4:จุดเซฟ 5:จุดเซฟ 6:จุดเซฟ 7:จุดเซฟ 8:จุดเซฟ 9:จุดเซฟ 10:จุดเซฟ 11:จุดเซฟ 12:จุดเซฟ 13:จุดเซฟ 14:จุดเซฟ 15:จุดเซฟ 16:จุดเซฟ 17:จุดเซฟ 18:จุดเซฟ 19:จุดเซฟ 20")){
+	case 1:
+		warp "new_pront",82,339;
+		break;
+	case 2:
+		warp "new_pront",42,317;
+		break;
+	case 3:
+		warp "new_pront",88,278;
+		break;
+	case 4:
+		warp "new_pront",39,203;
+		break;
+	case 5:
+		warp "new_pront",44,165;
+		break;
+	case 6:
+		warp "new_pront",49,111;
+		break;
+	case 7:
+		warp "new_pront",86,102;
+		break;
+	case 8:
+		warp "new_pront",63,54;
+		break;
+	case 9:
+		warp "new_pront",102,56;
+		break;
+	case 10:
+		warp "new_pront",154,82;
+		break;
+	case 11:
+		warp "new_pront",187,118;
+		break;
+	case 12:
+		warp "new_pront",235,74;
+		break;
+	case 13:
+		warp "new_pront",261,111;
+		break;
+	case 14:
+		warp "new_pront",273,203;
+		break;
+	case 15:
+		warp "new_pront",201,173;
+		break;
+	case 16:
+		warp "new_pront",203,249;
+		break;
+	case 17:
+		warp "new_pront",105,251;
+		break;
+	case 18:
+		warp "new_pront",240,234;
+		break;
+	case 19:
+		warp "new_pront",208,317;
+		break;
+	case 20:
+		warp "new_pront",273,340;
+		break;
+}
+close;
+
+guildmark:
+switch(select("จุดเซฟ 1:จุดเซฟ 2:จุดเซฟ 3:จุดเซฟ 4:จุดเซฟ 5:จุดเซฟ 6:จุดเซฟ 7:จุดเซฟ 8:จุดเซฟ 9:จุดเซฟ 10:จุดเซฟ 11:จุดเซฟ 12:จุดเซฟ 13:จุดเซฟ 14:จุดเซฟ 15:จุดเซฟ 16:จุดเซฟ 17:จุดเซฟ 18:จุดเซฟ 19:จุดเซฟ 20")){
+	case 1:
+		warp "payon",126,129;
+		break;
+	case 2:
+		warp "payon",129,71;
+		break;
+	case 3:
+		warp "morocc",159,258;
+		break;
+	case 4:
+		warp "morocc",159,98;
+		break;
+	case 5:
+		warp "yuno",122,160;
+		break;
+	case 6:
+		warp "yuno",277,197;
+		break;
+	case 7:
+		warp "comodo",192,147;
+		break;
+	case 8:
+		warp "comodo",308,186;
+		break;
+	case 9:
+		warp "geffen",135,195;
+		break;
+	case 10:
+		warp "geffen",42,152;
+		break;
+	case 11:
+		warp "xmas",149,136;
+		break;
+	case 12:
+		warp "xmas",104,253;
+		break;
+	case 13:
+		warp "prontera",273,208;
+		break;
+	case 14:
+		warp "prontera",35,210;
+		break;
+	case 15:
+		warp "aldebaran",140,240;
+		break;
+	case 16:
+		warp "aldebaran",88,66;
+		break;
+	case 17:
+		warp "alberta",109,233;
+		break;
+	case 18:
+		warp "alberta",219,52;
+		break;
+	case 19:
+		warp "moc_ruins",69,166;
+		break;
+	case 20:
+		warp "moc_ruins",77,24;
+		break;
+}
+close;
+
+elumenu:
+warp "gl_cas02",0,0;
+close;
+
+cardmenu:
+mes"โปรดเลือกสถานที่ ที่ต้องการไป";
+mes"จากเมนูด้านล่างค่ะ...";
+switch(select("หาการ์ดม้าน้ำ:หาการ์ดอีวิว")){
+	case 1:
+		warp "iz_dun04",0,0;
+		break;
+	case 2:
+		warp "gl_church",0,0;
+		break;
+}
+close;
+
+pvpmenu:
+mes"โปรดเลือกสถานที่ ที่ต้องการไป";
+mes"จากเมนูด้านล่างค่ะ...";
+menu 
+"- Izlude จำนวน ^FF0000["+getmapusers("pvp_y_8-2.gat")+"]^000000 คน",Lgo2,
+"- Prontera จำนวน ^FF0000["+getmapusers("pvp_y_8-1.gat")+"]^000000 คน",Lgo1,
+"- Payon จำนวน ^FF0000["+getmapusers("pvp_y_8-3.gat")+"]^000000 คน",Lgo3,
+"- Alberta จำนวน ^FF0000["+getmapusers("pvp_y_8-4.gat")+"]^000000 คน",Lgo4,
+"- Morocc จำนวน ^FF0000["+getmapusers("pvp_y_8-5.gat")+"]^000000 คน",Lgo5;
+
+Lgo1:
+warp "pvp_y_8-1.gat", 0, 0;  close;
+	
+Lgo2:
+warp "pvp_y_8-2.gat", 0, 0;  close;
+
+Lgo3: 
+warp "pvp_y_8-3.gat", 0, 0;  close;
+	
+Lgo4: 
+warp "pvp_y_8-4.gat", 0, 0;  close;
+
+Lgo5: 
+warp "pvp_y_8-5.gat", 0, 0;  close;
+
+gvgmenu:	
+mes"โปรดเลือกสถานที่ ที่ต้องการไป";
+mes"จากเมนูด้านล่างค่ะ...";
+mes	" Aldebaran -"+( ( $Alde1 == 0 )?"":"^117000 Neuschwanstein["+getmapusers("aldeg_cas01")+"] คน^000000")+( ( $Alde2 == 0 )?"":"^117000 Hohenschwangau["+getmapusers("aldeg_cas02")+"] คน^000000")+( ( $Alde3 == 0 )?"":"^117000 Nuenberg["+getmapusers("aldeg_cas03")+"] คน^000000")+( ( $Alde4 == 0 )?"":"^117000 Wuerzburg["+getmapusers("aldeg_cas04")+"] คน^000000")+( ( $Alde5 == 0 )?"":"^117000 Rothenburg["+getmapusers("aldeg_cas05")+"] คน^000000");
+mes	" Geffen -"+( ( $Geff1 == 0 )?"":"^117000 Eeyolbriggar["+getmapusers("gefg_cas01")+"] คน^000000")+( ( $Geff2 == 0 )?"":"^117000 Yesnelph["+getmapusers("gefg_cas02")+"] คน^000000")+( ( $Geff3 == 0 )?"":"^117000 Bergel["+getmapusers("gefg_cas03")+"] คน^000000")+( ( $Geff4 == 0 )?"":"^117000 Mersetzdeitz["+getmapusers("gefg_cas04")+"] คน^000000")+( ( $Geff5 == 0 )?"":"^117000 Repherion["+getmapusers("gefg_cas05")+"] คน^000000");
+mes	" Payon -"+( ( $Payo1 == 0 )?"":"^117000 Bright Arbor["+getmapusers("payg_cas01")+"] คน^000000")+( ( $Payo2 == 0 )?"":"^117000 Scarlet Palace["+getmapusers("payg_cas02")+"] คน^000000")+( ( $Payo3 == 0 )?"":"^117000 Holy Shadow["+getmapusers("payg_cas03")+"] คน^000000")+( ( $Payo4 == 0 )?"":"^117000 Sacred Altar["+getmapusers("payg_cas04")+"] คน^000000")+( ( $Payo5 == 0 )?"":"^117000 Bamboo Grove Hill["+getmapusers("payg_cas05")+"] คน^000000");
+mes	" Prontera -"+( ( $Pron1 == 0 )?"":"^117000 Kriemhild["+getmapusers("prtg_cas01")+"] คน^000000")+( ( $Pron2 == 0 )?"":"^117000 Swanhild["+getmapusers("prtg_cas02")+"] คน^000000")+( ( $Pron3 == 0 )?"":"^117000 Fadhgridh["+getmapusers("prtg_cas03")+"] คน^000000")+( ( $Pron4 == 0 )?"":"^117000 Skoegul["+getmapusers("prtg_cas04")+"] คน^000000")+( ( $Pron5 == 0 )?"":"^117000 Gondul["+getmapusers("prtg_cas05")+"] คน^000000");
+
+menu
+"- วาร์ปบ้านล่าสุด -"+"^117117 "+$LastCastle$+"^000000",GO_Last,
+//"- Zone 1     ["+getmapusers("play_cas02")+"] คน",Go_Zone1,
+//"- Zone 2     ["+getmapusers("play_cas02")+"] คน",Go_Zone2,
+"- Aldebaran",Aldebarangvg,
+"- Geffen",Geffengvg,
+"- Payon",Payongvg,
+"- Prontera",Pronteragvg;
+
+Aldebarangvg:
+menu
+"- Aldebaran -"+( ( $Alde1 == 0 )?"^ed1c24 Neuschwanstein^000000":"^117000 Neuschwanstein^000000 (เปิด)" ),GO_Alde1,
+"- Aldebaran -"+( ( $Alde2 == 0 )?"^ed1c24 Hohenschwangau^000000":"^117000 Hohenschwangau^000000 (เปิด)" ),GO_Alde2,
+//"- Aldebaran -"+( ( $Alde3 == 0 )?"^ed1c24 Nuenberg^000000":"^117000 Nuenberg^000000 (เปิด)" ),GO_Alde3,
+"- Aldebaran -"+( ( $Alde4 == 0 )?"^ed1c24 Wuerzburg^000000":"^117000 Wuerzburg^000000 (เปิด)" ),GO_Alde4,
+"- Aldebaran -"+( ( $Alde5 == 0 )?"^ed1c24 Rothenburg^000000":"^117000 Rothenburg^000000 (เปิด)" ),GO_Alde5;
+
+Geffengvg:
+menu
+"- Geffen -"+( ( $Geff1 == 0 )?"^ed1c24 Eeyolbriggar^000000":"^117000 Eeyolbriggar^000000 (เปิด)" ),GO_Geff1,
+"- Geffen -"+( ( $Geff2 == 0 )?"^ed1c24 Yesnelph^000000":"^117000 Yesnelph^000000 (เปิด)" ),GO_Geff2,
+//"- Geffen -"+( ( $Geff3 == 0 )?"^ed1c24 Bergel^000000":"^117000 Bergel^000000 (เปิด)" ),GO_Geff3,
+"- Geffen -"+( ( $Geff4 == 0 )?"^ed1c24 Mersetzdeitz^000000":"^117000 Mersetzdeitz^000000 (เปิด)" ),GO_Geff4,
+"- Geffen -"+( ( $Geff5 == 0 )?"^ed1c24 Repherion^000000":"^117000 Repherion^000000 (เปิด)" ),GO_Geff5;
+
+Payongvg:
+menu
+"- Payon -"+( ( $Payo1 == 0 )?"^ed1c24 Bright Arbor^000000":"^117000 Bright Arbor^000000 (เปิด)" ),GO_Payo1,
+"- Payon -"+( ( $Payo2 == 0 )?"^ed1c24 Scarlet Palace^000000":"^117000 Scarlet Palace^000000 (เปิด)" ),GO_Payo2,
+//"- Payon -"+( ( $Payo3 == 0 )?"^ed1c24 Holy Shadow^000000":"^117000 Holy Shadow^000000 (เปิด)" ),GO_Payo3,
+"- Payon -"+( ( $Payo4 == 0 )?"^ed1c24 Sacred Altar^000000":"^117000 Sacred Altar^000000 (เปิด)" ),GO_Payo4,
+"- Payon -"+( ( $Payo5 == 0 )?"^ed1c24 Bamboo Grove Hill^000000":"^117000 Bamboo Grove Hill^000000 (เปิด)" ),GO_Payo5;
+
+Pronteragvg:
+menu
+"- Prontera -"+( ( $Pron1 == 0 )?"^ed1c24 Kriemhild^000000":"^117000 Kriemhild^000000 (เปิด)" ),GO_Pron1,
+"- Prontera -"+( ( $Pron2 == 0 )?"^ed1c24 Swanhild^000000":"^117000 Swanhild^000000 (เปิด)" ),GO_Pron2,
+//"- Prontera -"+( ( $Pron3 == 0 )?"^ed1c24 Fadhgridh^000000":"^117000 Fadhgridh^000000 (เปิด)" ),GO_Pron3,
+"- Prontera -"+( ( $Pron4 == 0 )?"^ed1c24 Skoegul^000000":"^117000 Skoegul^000000 (เปิด)" ),GO_Pron4,
+"- Prontera -"+( ( $Pron5 == 0 )?"^ed1c24 Gondul^000000":"^117000 Gondul^000000 (เปิด)" ),GO_Pron5;
+
+GO_Last:
+if(lastmapwar$ == "") { close; }
+warp lastmapwar$,lastwarx,lastwary;
+
+close;
+
+Go_Zone1:
+set	$LastCastle$, "เล่นหน้าบ้าน 01";
+set lastmapwar$,"prt_gld";
+set lastwarx,193;
+set lastwary,50;
+warp "guild_vs4",58,50;
+
+close;
+
+Go_Zone2:
+set	$LastCastle$, "เล่นหน้าบ้าน 02";
+set lastmapwar$,"pay_gld";
+set lastwarx,141;
+set lastwary,242;
+warp "guild_vs4",41,50;
+
+close;
+
+Go_Dual:
+set	$LastCastle$, "กิลวอร์แบบ 1 - 1";
+set lastmapwar$,"payon"; 
+set lastwarx,89;
+set lastwary,150;
+warp "payon",89,150;
+
+close;
+
+GO_Alde1:
+if(getgmlevel() == 99){ warp "alde_gld",48,83; close; }
+if	($Alde1 == 1) { 
+	set	$LastCastle$, "Neuschwanstein";
+	set lastmapwar$,"alde_gld"; 
+	set lastwarx,48;
+	set lastwary,83;
+	warp "alde_gld",48,83;
+	
+	close;
+}
+close;
+
+GO_Alde2:
+if(getgmlevel() == 99){ warp "alde_gld",95,247; close; }
+if	($Alde2 == 1) { 
+	set	$LastCastle$, "Hohenschwangau";
+	set lastmapwar$,"alde_gld";
+	set lastwarx,95;
+	set lastwary,247;
+	warp "alde_gld",95,247;
+	
+	close;
+}
+close;
+
+GO_Alde3:
+if(getgmlevel() == 99){ warp "alde_gld",142,84; close; }
+if	($Alde3 == 1) { 
+	set	$LastCastle$, "Nuenberg";
+	set lastmapwar$,"alde_gld";
+	set lastwarx,142;
+	set lastwary,84;
+	warp "alde_gld",142,84;
+	
+	close;
+}
+close;
+
+GO_Alde4:
+if(getgmlevel() == 99){ warp "alde_gld",237,242; close; }
+if	($Alde4 == 1) {
+	set	$LastCastle$, "Wuerzburg";
+	set lastmapwar$,"alde_gld";
+	set lastwarx,237;
+	set lastwary,242;
+	warp "alde_gld",237,242;
+	
+	close;
+}
+close;
+
+GO_Alde5:
+if(getgmlevel() == 99){ warp "alde_gld",268,89; close; }
+if	($Alde5 == 1) {
+	set	$LastCastle$, "Rothenburg";
+	set lastmapwar$,"alde_gld"; 
+	set lastwarx,268; 
+	set lastwary,89; 
+	warp "alde_gld",268,89;
+	
+	close;
+}
+close;
+
+GO_Geff1:
+if(getgmlevel() == 99){ warp "gef_fild13",308,241; close; }
+if	($Geff1 == 1) {
+	set	$LastCastle$, "Eeyolbriggar";
+	set lastmapwar$,"gef_fild13";
+	set lastwarx,308;
+	set lastwary,241;
+	warp "gef_fild13",308,241;
+	
+	close;
+}
+close;
+
+GO_Geff2:
+if(getgmlevel() == 99){ warp "gef_fild13",83,181; close; }
+if	($Geff2 == 1) {
+	set	$LastCastle$, "Yesnelph";
+	set lastmapwar$,"gef_fild13";
+	set lastwarx,83;
+	set lastwary,181;
+	warp "gef_fild13",83,181;
+	
+	close;
+}
+close;
+
+GO_Geff3:
+if(getgmlevel() == 99){ warp "gef_fild13",193,278; close; }
+if	($Geff3 == 1) {
+	set	$LastCastle$, "Bergel";
+	set lastmapwar$,"gef_fild13";
+	set lastwarx,193;
+	set lastwary,278;
+	warp "gef_fild13",193,278;
+	
+	close;
+}
+close;
+
+GO_Geff4:
+if(getgmlevel() == 99){ warp "gef_fild13",252,57; close; }
+if	($Geff4 == 1) {
+	set	$LastCastle$, "Mersetzdeitz";
+	set lastmapwar$,"gef_fild13";
+	set lastwarx,252;
+	set lastwary,57;
+	warp "gef_fild13",252,57;
+	
+	close;
+}
+close;
+
+GO_Geff5:
+if(getgmlevel() == 99){ warp "gef_fild13",213,75; close; }
+if	($Geff5 == 1) {
+	set	$LastCastle$, "Repherion";
+	set lastmapwar$,"gef_fild13";
+	set lastwarx,213;
+	set lastwary,75;
+	warp "gef_fild13",213,75;
+	
+	close;
+}
+close;
+
+GO_Payo1:
+if(getgmlevel() == 99){ warp "pay_gld",122,234; close; }
+if	($Payo1 == 1) {
+	set	$LastCastle$, "Bright Arbor";
+	set lastmapwar$,"pay_gld";
+	set lastwarx,122;
+	set lastwary,234;
+	warp "pay_gld",122,234;
+	
+	close;
+}
+close;
+
+GO_Payo2:
+if(getgmlevel() == 99){ warp "pay_gld",294,116; close; }
+if	($Payo2 == 1) {
+	set	$LastCastle$, "Scarlet Palace";
+	set lastmapwar$,"pay_gld";
+	set lastwarx,294;
+	set lastwary,116;
+	warp "pay_gld",294,116;
+	
+	close;
+}
+close;
+
+GO_Payo3:
+if(getgmlevel() == 99){ warp "pay_gld",319,293; close; }
+if	($Payo3 == 1) {
+	set	$LastCastle$, "Holy Shadow";
+	set lastmapwar$,"pay_gld";
+	set lastwarx,319;
+	set lastwary,293;
+	warp "pay_gld",319,293;
+	
+	close;
+}
+close;
+
+GO_Payo4:
+if(getgmlevel() == 99){ warp "pay_gld",140,160; close; }
+if	($Payo4 == 1) {
+	set	$LastCastle$, "Sacred Altar";
+	set lastmapwar$,"pay_gld";
+	set lastwarx,140;
+	set lastwary,160;
+	warp "pay_gld",140,160;
+	
+	close;
+}
+close;
+
+GO_Payo5:
+if(getgmlevel() == 99){ warp "pay_gld",204,266; close; }
+if	($Payo5 == 1) {
+	set	$LastCastle$, "Bamboo Grove Hill";
+	set lastmapwar$,"pay_gld";
+	set lastwarx,204;
+	set lastwary,266;
+	warp "pay_gld",204,266;
+	
+	close;
+}
+close;
+
+GO_Pron1:
+if(getgmlevel() == 99){ warp "prt_gld",140,64; close; }
+if	($Pron1 == 1) {
+	set	$LastCastle$, "Kriemhild";
+	set lastmapwar$,"prt_gld"; 
+	set lastwarx,140;
+	set lastwary,64;
+	warp "prt_gld",140,64;
+	
+	close;
+}
+close;
+
+GO_Pron2:
+if(getgmlevel() == 99){ warp "prt_gld",240,128; close; }
+if	($Pron2 == 1) {
+	set	$LastCastle$, "Swanhild";
+	set lastmapwar$,"prt_gld"; 
+	set lastwarx,240;
+	set lastwary,128;
+	warp "prt_gld",240,128;
+	
+	close;
+}
+close;
+
+GO_Pron3:
+if(getgmlevel() == 99){ warp "prt_gld",153,138; close; }
+if	($Pron3 == 1) {
+	set	$LastCastle$, "Fadhgridh";
+	set lastmapwar$,"prt_gld";
+	set lastwarx,153;
+	set lastwary,138;
+	warp "prt_gld",153,138;
+	
+	close;
+}
+close;
+
+GO_Pron4:
+if(getgmlevel() == 99){ warp "prt_gld",123,239; close; }
+if	($Pron4 == 1) {
+	set	$LastCastle$, "Skoegul";
+	set lastmapwar$,"prt_gld";
+	set lastwarx,123;
+	set lastwary,239;
+	warp "prt_gld",123,239;
+	
+	close;
+}
+close;
+
+GO_Pron5:
+if(getgmlevel() == 99){ warp "prt_gld",196,239; close; }
+if	($Pron5 == 1) {
+	set	$LastCastle$, "Gondul";
+	set lastmapwar$,"prt_gld";
+	set lastwarx,196;
+	set lastwary,239;
+	warp "prt_gld",196,239;
+	
+	close;
+}
+close;
+
+	OnInit:
+	set	$LastCastle$, "ยังไม่มี";
+	end; 
+}
+
+-	script	WarpItem	-1,{
+mes "เลือกสถานที่ ได้เลย";
+menu
+"หา Elunium / Oridecon",elu,
+"หา Marc Card",marc,
+"หา Evil Druid Card",evil,
+"หา Electric Fist [3]",electric,
+"หา Magma Fist [3]",magma;
+
+elu:
+warp "gl_cas02",0,0;
+end;
+
+marc:
+warp "iz_dun04",0,0;
+end;
+
+evil:
+warp "gl_church",0,0;
+end;
+
+electric:
+warp "yuno_fild07",0,0;
+end;
+
+magma:
+warp "mag_dun01",0,0;
+end;
+
+OnInit:
+waitingroom "  วาปหาของ ",0;
+end;
+}

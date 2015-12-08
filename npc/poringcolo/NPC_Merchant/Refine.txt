@@ -1,0 +1,239 @@
+-	script	normalrefine	813,{
+callfunc "normalrefine","^FF0000[ตีบวกแร่ปกติ]^000000",0;
+end;
+
+OnInit:
+waitingroom "ตีบวก",0;
+end;
+}
+
+function	script	normalrefine	{
+set .@features,getarg(1);
+mes ""+getarg(0)+"";
+mes"เจ้าจะตีสิ่งใดโปรดเลือก";
+next;
+again:
+setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+set .@menu$,"";
+for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+{
+if( getequipisequiped(.@i) )
+set .@menu$, .@menu$ + .@position$[.@i] + " - " + "" + getequipname(.@i) + "";
+set .@menu$, .@menu$ + ":";
+}
+set .@part,select(.@menu$);
+if(!getequipisequiped(.@part)) {
+mes ""+getarg(0)+"";
+mes "ไม่สามารถตีบวกได้ครับ";
+close;
+}
+if(!getequipisenableref(.@part)) {
+mes ""+getarg(0)+"";
+mes "ไม่สามารถตีบวกได้ครับ";
+close;
+}
+/*if(!getequipisidentify(.@part)) {
+mes ""+getarg(0)+"";
+mes "ไม่สามารถตีบวกได้ครับ";
+close;
+}*/
+if(getequiprefinerycnt(.@part) >= 20) {
+mes ""+getarg(0)+"";
+mes "ไม่สามารถตีบวกได้ครับ";
+close;
+}
+mes ""+getarg(0)+"";
+next;
+set .@refineget,1;
+if (select("^0000FF-^000000 แบบปกติ","^0000FF-^000000 แบบจำนวน") == 2) {
+mes ""+getarg(0)+"";
+mes "กรอกจำนวนตีบวกครับ";
+next;
+input .@refineget;
+if ((.@refineget+getequiprefinerycnt(.@part)) >= 20)
+set .@refineget,(20-getequiprefinerycnt(.@part));
+if (.@refineget < 1) {
+close;
+}
+}
+set .@refineitemid, getequipid(.@part);
+set .@refinerycnt, getequiprefinerycnt(.@part);
+switch(getequipweaponlv(.@part)){
+case 0: 	
+set .@price,2000;
+set .@material,985;
+set .@safe,4;
+break;
+case 1: 	
+set .@price,50;
+set .@material,1010;
+set .@safe,7; 
+break;
+case 2: 	
+set .@price,200;
+set .@material,1011;
+set .@safe,6; 
+break;
+case 3: 	
+set .@price,5000;
+set .@material,984;
+set .@safe,5; 
+break;
+case 4: 	
+set .@price,20000;
+set .@material,984;
+set .@safe,4; 
+break;
+case 5: 	
+set .@price,2000;
+set .@material,985;
+set .@safe,4; 
+break;
+}
+if(.@features != 1) {
+mes ""+getarg(0)+"";
+mes "ต้องการ "+getitemname(.@material)+" "+.@refineget+" ea ครับ";
+mes "ต้องการ เงิน " +( .@price*.@refineget )+ " Zeny ครับ";
+mes "จำนวนตีบวก : ^0000FF"+.@refineget+"^000000";
+mes "คุณต้องตกลงการตีบวกครับ";
+next;
+if(select("^0000FF-^000000 ตกลง:^FF0000-^000000 ยกเลิก") == 2){
+close;
+}
+if(getequippercentrefinery(.@part) < 100) {
+mes ""+getarg(0)+"";
+switch(.@material) {
+case 985:
+mes "อุปกรณ์มีโอกาส ^FF0000เสียหาย^000000";
+break;
+default:
+mes "อุปกรณ์มีโอกาส ^FF0000เสียหาย^000000";
+break;
+}
+mes "คุณต้องตกลงการตีบวกครับ";
+next;
+if(select("^0000FF-^000000 ตกลง:^FF0000-^000000 ยกเลิก") == 2){
+close;
+}
+}
+if(getequiprefinerycnt(.@part) != .@refinerycnt || getequipid(.@part) != .@refineitemid) { 
+close;
+}
+if((countitem(.@material) < .@refineget) || (Zeny < .@price*.@refineget)) {
+mes ""+getarg(0)+"";
+mes "คุณมีแร่หรือเงินไม่พอครับ";
+close;
+}
+if (.@refineget > 1) {
+while (.@refineget != 0) {
+if(getequipisequiped(.@part) == 0) { 
+close;
+}
+set Zeny,Zeny-.@price;
+delitem .@material,1;
+if(getequippercentrefinery(.@part) <= rand(100)) {
+failedrefitem .@part;
+close;
+}
+successrefitem .@part;
+set .@refineget,.@refineget-1;
+}
+close;
+}
+set Zeny,Zeny-.@price;
+delitem .@material,.@refineget;
+if(getequipisequiped(.@part) == 0) { 
+close;
+}
+if(getequippercentrefinery(.@part) <= rand(100)) {
+failedrefitem .@part;
+close;
+}
+successrefitem .@part;
+next;
+goto again;
+}
+}
+/*
+morocc,155,43,4	script	+5 ฟรี#1	118,{
+	for(set @part,1;@part<=6;set @part,@part+1)
+	if(getequipisequiped(@part))
+	while(getequiprefinerycnt(@part) < 5)
+	successrefitem @part;
+	close;
+
+}
+morocc,158,43,4	script	+5 ฟรี#2	118,{
+	for(set @part,1;@part<=6;set @part,@part+1)
+	if(getequipisequiped(@part))
+	while(getequiprefinerycnt(@part) < 5)
+	successrefitem @part;
+	close;
+
+}
+
+morocc,161,43,4	script	ลดตีบวกลง	118,{
+mes "^FF0000[ลดการตีบวก]^000000";
+mes "คุณต้องลดการตีบวกอุปกรณ์ชิ้นไหน?";
+mes "กรุณาเลือก:";
+mes "หากไม่ต้องการให้ITEM";
+mes "ชิ้นนั้น+กรุณาใส่ค่าเป็น 0 ครับ";
+next;
+setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+set .@menu$,"";
+for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+{
+if( getequipisequiped(.@i) )
+set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
+set .@menu$, .@menu$ + ":";
+}
+set .@part,select(.@menu$);
+if(!getequipisenableref(.@part)) {
+mes "[ DownGrade ]";
+mes "ไอเทมชิ้นนี้ไม่สามารถลดการตีบวกได้";
+close;
+}
+if(getequiprefinerycnt(.@part) == 0) {
+mes "[ DownGrade ]";
+mes "คุณต้องอัพเกรดมากกว่า +1";
+close;
+}
+mes "^FF0000[ลดการตีบวก]^000000";
+mes "คุณต้องการลดเหลือ บวก อะไร ?";
+mes "ถ้าใส่ลดมากกว่าบวกที่มีอยู่จะยกเลิก";
+mes ""+getequipname(.@part)+" : บวก "+getequiprefinerycnt(.@part)+"";
+mes "999 = ยกเลิก";
+input .@DG_GD;
+next;
+if (.@DG_GD >= 999) close;
+if(getequiprefinerycnt(.@part) <= .@DG_GD) {
+mes "^FF0000[ลดการตีบวก]^000000";
+mes "คุณใส่จำนวนมากกว่าการตีบวกที่คุณมีอยู่";
+mes "หรือคุณใส่จำนวนการตีบวกเท่าเดิม";
+close;
+}
+if (.@DG_GD > 10) {
+mes "^FF0000[ตีบวกแร่ปกติ]^000000";
+mes "คุณใส่มากกว่า 10 ไม่ได้";
+close;
+}
+set .@DG_EQUIPE,0;
+set .@DG_EQUIPC,0;
+set .@DG_EQUIPCA,0;
+set .@DG_EQUIPCR,0;
+set .@DG_EQUIPCD,0;
+set .@DG_EQUIPE,getequipid(.@part);
+set .@DG_EQUIPC,getequipcardid(.@part,0);
+set .@DG_EQUIPCA,getequipcardid(.@part,1);
+set .@DG_EQUIPCR,getequipcardid(.@part,2);
+set .@DG_EQUIPCD,getequipcardid(.@part,3);
+//delitem .@DG_EQUIPE,1;
+failedrefitem .@part;
+getitem2 .@DG_EQUIPE,1,1,.@DG_GD,0,.@DG_EQUIPC,.@DG_EQUIPCA,.@DG_EQUIPCR,.@DG_EQUIPCD;
+close;
+
+
+}*/
+
+shop_in01,99,374,4	duplicate(normalrefine)	ตีบวก	2_M_OLDBLSMITH

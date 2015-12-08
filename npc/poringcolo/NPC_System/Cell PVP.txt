@@ -1,0 +1,20 @@
+-	script	cellpvp	-1,{
+end;
+
+OnInit:
+setcell "oasis",120,209,199,134,cell_pvp, 1;
+end;
+}
+/*
+function	script	F_Autobuff {
+ 
+sc_start SC_BLESSING, 60000, 10;
+sc_start SC_INCREASEAGI, 60000, 10;
+return;
+}
+ 
+-	script	deathmatch_core	-1,{
+ 
+callfunc("F_Autobuff");
+end;
+}*/

@@ -1,0 +1,76 @@
+//================= eAthena Script ========================
+//=========================================================
+//=========================================================
+
+-	script	gmlogin	-1,{
+    
+OnPCLoginEvent:
+		set @Low,1; // กำหนดจำนวนไอเท็มต่ำสุด
+		set @Up,5; // กำหนดจำนวนไอเท็มสูงสุด
+		set @random,rand(@Low,@Up);
+    if(getgmlevel() > 1 ) {
+        //atcommand "@hide";
+	atcommand "@speed 10";
+	atcommand "@autoloot";
+	//warp "sec_pri",42,29;
+ //       atcommand "@monsterignore";
+ //       atcommand "@uptime";
+        dispbottom "ยินดีต้อนรับ ทีมงาน  Club RO Support";
+        dispbottom "ขณะนี้เวลา : " + gettimestr("%A %B %d %Y - %I:%M %p",40);
+		/*if (@random == 1){
+			cutin "tutorial01",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 2){
+			cutin "tutorial02",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 3){
+			cutin "tutorial03",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 4){
+			cutin "tutorial04",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 5){
+			cutin "tutorial05",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		end;*/
+    }
+	else {
+		if (@random == 1){
+			cutin "tutorial01",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 2){
+			cutin "tutorial02",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 3){
+			cutin "tutorial03",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 4){
+			cutin "tutorial04",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		else if (@random == 5){
+			cutin "tutorial05",3;
+			sleep2 20000;
+			cutin "",255;
+		}
+		end;
+	}
+end;
+}

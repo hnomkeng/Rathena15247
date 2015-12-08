@@ -1,0 +1,29 @@
+oasis,150,83,7	script	ผู้ประกาศข่าว	750,{
+mes "[ผู้ประกาศข่าว]";
+mes "สวัสดีค่ะ ดิฉันยินดีจะเป็นกระบอกเสียงให้ท่าน";
+next;
+switch(select("ข้าต้องการ:ยกเลิก")){
+	case 1:
+		if(zeny < 150000000){
+			mes "^FF0000คุณมีเงินไม่พอ สำหรับประกาศ^000000";
+			close;
+		}
+		input @message$;
+		mes "[ผู้ประกาศข่าว]";
+		mes "ดิฉันจะประกาศแล้วนะคะ";
+		next;
+
+		announce "คุณ [ " +strcharinfo(0) + " ] ได้ฝากข้อความว่า [ " + @message$ + " ] ค่ะ" ,0,0x00C635;
+		set Zeny,Zeny-150000000;
+		break;
+	case 2:
+		close;
+		break;
+}
+
+end;
+
+OnInit:
+waitingroom "ประกาศ",0;
+end;
+}

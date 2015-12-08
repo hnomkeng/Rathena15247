@@ -1,0 +1,81 @@
+oasis,169,84,4	script	ลานประลอง	4_M_KY_SOLD,{
+mes "ลานประลอง";
+next;
+menu 
+	"ลานประลอง ^FF0000ผู้ยังไม่เคยจุติ^000000 ["+getmapusers("guild_vs1-1")+"] คน",nojuti,
+	"ลานประลอง ^FF0000Status ไม่เกิน 100^000000 ["+getmapusers("guild_vs1-2")+"] คน",pvp100,
+	"ลานประลอง ^FF0000Status ไม่เกิน 200^000000 ["+getmapusers("guild_vs1-3")+"] คน",pvp200,
+	"ลานประลอง ^FF0000Status ไม่เกิน 400^000000 ["+getmapusers("guild_vs1-4")+"] คน",pvp400,
+	"ลานประลอง ^FF0000Status ไม่จำกัด^000000 ["+getmapusers("guild_vs2-1")+"] คน",nolimit;
+	
+nojuti:
+	if (juti == 0) {
+		warp "guild_vs1-1",0,0;
+		end;
+	} else {
+		mes "[ผู้ดูแลลานประลอง]";
+		mes "เสียใจด้วย";
+		mes "ลานประลองนี้^FF0000สำหรับผู้ที่ไม่เคยจุติ^000000 เท่านั้น";
+		end;
+	}
+end;
+
+pvp100:
+	if(readparam(13) > 100) goto no1;
+	if(readparam(14) > 100) goto no1;
+	if(readparam(15) > 100) goto no1;
+	if(readparam(16) > 100) goto no1;
+	if(readparam(17) > 100) goto no1;
+	if(readparam(18) > 100) goto no1;
+	
+	warp "guild_vs1-2",0,0;
+	end;
+
+	no1:	
+		mes "[ผู้ดูแลลานประลอง]";
+		mes "เสียใจด้วย ลานประลองนี้^FF0000สำหรับผู้ที่ Status ไม่เกิน 100^000000 เท่านั้น";
+	end;
+end;
+
+pvp200:
+	if(readparam(13) > 200) goto no2;
+	if(readparam(14) > 200) goto no2;
+	if(readparam(15) > 200) goto no2;
+	if(readparam(16) > 200) goto no2;
+	if(readparam(17) > 200) goto no2;
+	if(readparam(18) > 200) goto no2;
+	
+	warp "guild_vs1-3",0,0;
+	end;
+
+	no2:	
+		mes "[ผู้ดูแลลานประลอง]";
+		mes "เสียใจด้วย ลานประลองนี้^FF0000สำหรับผู้ที่ Status ไม่เกิน 200^000000 เท่านั้น";
+	end;
+end;
+
+pvp400:
+	if(readparam(13) > 400) goto no3;
+	if(readparam(14) > 400) goto no3;
+	if(readparam(15) > 400) goto no3;
+	if(readparam(16) > 400) goto no3;
+	if(readparam(17) > 400) goto no3;
+	if(readparam(18) > 400) goto no3;
+	
+	warp "guild_vs1-4",0,0;
+	end;
+
+	no3:	
+		mes "[ผู้ดูแลลานประลอง]";
+		mes "เสียใจด้วย ลานประลองนี้^FF0000สำหรับผู้ที่ Status ไม่เกิน 400^000000 เท่านั้น";
+	end;
+end;
+
+nolimit:
+	warp "guild_vs2-1",0,0;
+end;
+
+OnInit:
+waitingroom "ลานประลอง",0;
+end;
+}

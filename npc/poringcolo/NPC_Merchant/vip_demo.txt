@@ -1,0 +1,209 @@
+-	shop	DETC_VIP	-1,11503:1,11504:1,27009:1,27010:1,27011:1,27012:1,27013:1,27014:1,27015:1
+-	shop	DHAT1_VIP	-1,30268:1,30269:1,30272:1,30273:1,30267:1,30278:1,30279:1,30280:1,30324:1,30326:1,30328:1,30333:1,30335:1,30337:1,30338:1,30339:1,30340:1,30341:1,30342:1,30343:1,30344:1,30345:1,30346:1,30347:1,30348:1,30349:1,30350:1,30351:1,30352:1,30355:1,30356:1,30357:1,30360:1,30365:1,30371:1
+-	shop	DHAT2_VIP	-1,30888:1,30107:1,30106:1,30105:1,30104:1,30103:1,30102:1,30101:1,30100:1,30099:1,30098:1,30097:1,30096:1,30095:1,30093:1,30091:1,30085:1,30083:1,30077:1,30070:1,30067:1,30066:1,30064:1,30054:1,30053:1,30050:1,30049:1,30048:1,30047:1,30044:1,30043:1,30025:1,30022:1,30021:1,30017:1
+-	shop	DHAT3_VIP	-1,30994:1,30993:1,30992:1,30990:1,30989:1,30984:1,30964:1,30957:1,30955:1,30945:1,30941:1,30939:1,30925:1,30921:1,30920:1,30915:1,30914:1,30949:1,30948:1,30947:1/*,30981:1,30982:1,30979:1,30978:1,30975:1,30974:1,30973:1,30972:1,30971:1,30966:1,30965:1,30964:1,30959:1*/
+//-	shop	DHAT4_VIP	-1,505:10
+
+louyang,202,110,5	script	Vip Show	4_M_HUMERCHANT,{
+	mes "นี่เป็นระบบดูไอเท็มบุฟเฟ่ต์";
+	mes "กรุณาสมัคร VIP ก่อนนะครับ";
+	mes "ถึงจะสามารถซื้อของ บุฟเฟต์ได้";
+	mes"^FF0000ได้รับ AB เลเวล 10 ^000000";
+	mes"^FF0000ได้รับ บัฟอาหาร เลเวล 3 ^000000";
+	mes"^FF0000โดยใช้คำสั่ง @vip ^000000";
+	next;
+	switch(select("ตัวอย่าง VIP")){
+		case 1:
+			menu
+			"- ตัวอย่าง VIP ทั่วไป",VIP_Demo1,
+			"- ตัวอย่าง VIP ส่วนหัว",VIP_Demo2,
+			"- ตัวอย่าง VIP ส่วนกลาง",VIP_Demo3,
+			"- ตัวอย่าง VIP ส่วนปาก",VIP_Demo4;
+			break;
+	}
+
+	VIP_Demo1:
+	callfunc "VIP_Demo","DETC_VIP",1;
+	end;
+	VIP_Demo2:
+	callfunc "VIP_Demo","DHAT1_VIP",1;
+	end;
+	VIP_Demo3:
+	callfunc "VIP_Demo","DHAT2_VIP",1;
+	end;
+	VIP_Demo4:
+	callfunc "VIP_Demo","DHAT3_VIP",1;
+	end;
+	VIP_Demo5:
+	callfunc "VIP_Demo","DHAT4_VIP",1;
+	end;
+	
+	OnBuyItem:
+	callfunc "VBuffet_ItemBuy";
+	end;
+	
+	
+	OnInit:
+	waitingroom " :: VIP SHOW ::", 0;
+	end; 
+}
+
+function	script	VIP_Demo	{
+	npcshopattach getarg(0),1;
+	mes "กรุณาสมัคร VIP ก่อนนะครับ";
+	mes "ถึงจะสามารถซื้อของ บุฟเฟต์ได้";
+	mes"^FF0000โดยใช้คำสั่ง @vip ^000000";
+	close2;
+	callshop getarg(0),getarg(1);
+	end;
+}
+
+function	script	VBuffet_ItemBuy	{
+	mes "นี่เป็นระบบดูไอเท็มบุฟเฟ่ต์";
+	mes "กรุณาสมัคร VIP ก่อนนะครับ";
+	mes "ถึงจะสามารถซื้อของ บุฟเฟต์ได้";
+	mes"^FF0000โดยใช้คำสั่ง @vip ^000000";
+	close;
+}
+
+-	script	Buffet_Shop	-1,{
+	OnBuyItem:
+	callfunc "VIP_Buy";
+	end;
+	OnAtcommand:
+	getmapxy .@mapname$,.@x,.@y,0,strcharinfo(0);
+	if (.@mapname$ == "aldeg_cas01" ||.@mapname$ == "aldeg_cas02" ||.@mapname$ == "aldeg_cas03" ||.@mapname$ == "aldeg_cas04" ||.@mapname$ == "aldeg_cas05") { end;}
+	if (.@mapname$ == "gefg_cas01" ||.@mapname$ == "gefg_cas02" ||.@mapname$ == "gefg_cas03" ||.@mapname$ == "gefg_cas04" ||.@mapname$ == "gefg_cas05") { end;}
+	if (.@mapname$ == "payg_cas01" ||.@mapname$ == "payg_cas02" ||.@mapname$ == "payg_cas03" ||.@mapname$ == "payg_cas04" ||.@mapname$ == "payg_cas05") {end;}
+	if (.@mapname$ == "prtg_cas01" ||.@mapname$ == "prtg_cas02" ||.@mapname$ == "prtg_cas03" ||.@mapname$ == "prtg_cas04" ||.@mapname$ == "prtg_cas05") {end;}
+	if (.@mapname$ == "play_cas01" ||.@mapname$ == "play_cas02" ||.@mapname$ == "gvg_cas01" ||.@mapname$ == "gvg_cas02" ||.@mapname$ == "gvg_cas03" ||.@mapname$ == "gvg_cas04") { end;}
+	if (#prmm > gettimetick(2)) {
+	set .@var$, callfunc("Time2Str",#prmm);
+	mes " คุณเหลือเวลา VIP อีก";
+	mes " ^DA2820"+.@var$+"^000000";
+	mes " ขอบคุณที่สนับสนุนเซิฟเวอร์นะครับ";
+	mes " เชิญเลือกซื้อของตามสบายเลย";
+	next;
+	menu
+	"VIP - ทั่วไป",Shop_BHat,
+	"VIP - ส่วนหัว",Shop_BCos1,
+	"VIP - ส่วนกลาง",Shop_BCos2,
+	"VIP - ส่วนปาก",Shop_BCos3;
+
+
+	Shop_BHat:
+	callfunc "VIP_Shop","DETC_VIP",1;
+	end;
+	Shop_BCos1:
+	callfunc "VIP_Shop","DHAT1_VIP",1;
+	end;
+	Shop_BCos2:
+	callfunc "VIP_Shop","DHAT2_VIP",1;
+	end;
+	Shop_BCos3:
+	callfunc "VIP_Shop","DHAT3_VIP",1;
+	end;
+	}
+	else
+	{
+	mes "[ ^83be29Vip System^000000 ]";
+	mes "^FF0000คุณไม่ใช่ VIP นะครับ^000000";
+	close;
+	}
+	OnInit:
+	bindatcmd "vip",strnpcinfo(3)+"::OnAtcommand";
+	end; 
+}
+
+function	script	VIP_Shop	{
+	npcshopattach getarg(0),1;
+	mes	"สงสัยสอบถาม Gm ได้ที่ Facebook";
+	mes	"ตลอดเวลานะครับ ยินดีบริการ";
+	mes	"^FF0000* หมายเหตุ ^000000";
+	mes	"เวลาซื้อของให้ซื้อ";
+	mes	"ทีละ 1 ชนิดนะครับ";
+	close2;
+	callshop getarg(0),getarg(1);
+	end;
+}
+
+function	script	VIP_Buy	{
+	if (#prmm > gettimetick(2)) {
+	if(@bought_nameid == 11503 || @bought_nameid == 11504 || @bought_nameid == 12114 || @bought_nameid == 12115 || @bought_nameid == 12116 || @bought_nameid == 12117 || @bought_nameid == 605 || @bought_nameid == 662 || @bought_nameid == 606){
+	getitem @bought_nameid,@bought_quantity;
+	end;
+	}
+	set @bought_nameid,@bought_nameid[.@g];
+	rentitem @bought_nameid, (#prmm - gettimetick(2));
+	end;
+	}
+	else
+	{
+	mes "[ ^83be29Vip System^000000 ]";
+	mes "VIP คุณหมดแล้วนะครับ";
+	mes "กรุณาสมัคร VIP ก่อนนะครับ";
+	mes "ถึงจะสามารถซื้อของ VIP ได้ครับ";
+	close;
+	}
+}
+
+function	script	getPremium	{
+	set .@ticks, getarg(0);
+	if (.@ticks <= 0)
+	{
+		debugmes "getPremium - tried to set a timer in the past";
+		end;
+	}
+	set #prmm, ((#prmm > gettimetick(2)) ? #prmm : gettimetick(2)) + .@ticks;
+	doevent "login::OnPCLoginEvent";
+	return;
+}
+
+-	script	login	-1,{
+OnPCLoginEvent:
+	if (#prmm > gettimetick(2)) {
+		dispbottom "[ Vip System ] : คุณเหลือเวลา VIP อีก : " + callfunc("Time2Str",#prmm);
+		deltimer strnpcinfo(3)+"::OnPCLoginEvent";
+		if ((#prmm - gettimetick(2)) < 2147483)
+		{
+			addtimer (#prmm - gettimetick(2)) *1000, strnpcinfo(3)+"::OnPCLoginEvent";
+		}
+		else
+		{
+			addtimer 2147483000, strnpcinfo(3)+"::OnPCLoginEvent";
+		}
+	} else if (#prmm) {
+		set #prmm, 0;
+		dispbottom "[ Vip System ] : เวลา VIP ของคุณหมดแล้วกรุณาสมัคร VIP ใหม่นะครับ ";
+	}
+	end;
+
+	OnAtcommand:
+	if (#prmm > gettimetick(2))
+		{
+			dispbottom "[ Vip System ] : คุณเหลือเวลา VIP อีก : " + callfunc("Time2Str",#prmm);
+			end;
+		}
+		else
+		{
+			dispbottom "[ Vip System ] : เวลา VIP ของคุณหมดแล้วกรุณาสมัคร VIP ใหม่นะครับ ";
+			end;
+		}
+
+	OnInit:
+	bindatcmd "check",strnpcinfo(3)+"::OnAtcommand";
+	end; 
+
+}
+-	script	endvip	-1,{
+	OnAtcommand:
+	set #prmm, 0;
+	end;
+
+	OnInit:
+	bindatcmd "vipend",strnpcinfo(3)+"::OnAtcommand";
+	end; 
+
+}
+
+sec_pri,40,29,4	duplicate(Vip Show)	Vip Show#HM11	435		//ตรวจสอบแล้ว

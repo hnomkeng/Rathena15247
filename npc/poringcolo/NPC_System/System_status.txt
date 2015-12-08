@@ -1,0 +1,412 @@
+oasis,138,97,4	script	ลดสเตตัส	4_F_CHNDRESS3,{
+set .@strx,readparam(13);
+set .@agix,readparam(14);
+set .@vitx,readparam(15);
+set .@intx,readparam(16);
+set .@dexx,readparam(17);
+set .@lukx,readparam(18);
+mes "[พนักงานลดสเตตัส]";
+mes "คุณมีสเตตัส ดังนี้";
+mes "STR : ^FF0000"+ .@strx +"^000000";
+mes "AGI : ^FF0000"+ .@agix +"^000000";
+mes "VIT : ^FF0000"+ .@vitx +"^000000";
+mes "INT : ^FF0000"+ .@intx +"^000000";
+mes "DEX : ^FF0000"+ .@dexx +"^000000";
+mes "LUK : ^FF0000"+ .@lukx +"^000000";
+mes "เลือกสเตตัสที่เจ้าต้องเลยการได้";
+mes "โดยต้องใช้ ^FF0000TCG Card 10 ea และ เงินจำนวน 50,000,000 z^000000";
+next;
+if(countitem(7227) < 50){
+	mes "^FF0000คุณมีไอเท็มไม่เพียงพอ ที่จะทำราย^000000";
+	end;
+}
+if(Zeny < 50000000){
+	mes "^FF0000คุณมีเงินไม่เพียงพอ ที่จะทำราย^000000";
+	end;
+}
+switch(select("STR:AGI:VIT:INT:DEX:LUK")){
+	case 1:
+		next;
+		mes "[พนักงานลดสเตตัส]";
+		mes "กรุณาใส่จำนวนที่ต้องการลด";
+		set .@str,0;
+		input .@str;
+		if(.@str <= .@strx){
+			next;
+			mes "[พนักงานลดสเตตัส]";
+			mes "กรุณาใส่จำนวนที่มากกว่าที่คุณมีอยู่";
+			end;
+		}
+		next;
+		mes "เสร็จสมบูรณ์แล้ว";
+		delitem 7227,50;
+		set Zeny,Zeny-50000000;
+		statusup2 13, -.@str ;
+		break;
+	case 2:
+		next;
+		mes "[พนักงานลดสเตตัส]";
+		mes "กรุณาใส่จำนวนที่ต้องการลด";
+		set .@agi,0;
+		input .@agi;
+		if(.@agi <= agix){
+			next;
+			mes "[พนักงานลดสเตตัส]";
+			mes "กรุณาใส่จำนวนที่มากกว่าที่คุณมีอยู่";
+			end;
+		}
+		next;
+		mes "เสร็จสมบูรณ์แล้ว";
+		delitem 7227,50;
+		set Zeny,Zeny-50000000;
+		statusup2 14, -.@agi ;
+		break;
+	case 3:
+		next;
+		mes "[พนักงานลดสเตตัส]";
+		mes "กรุณาใส่จำนวนที่ต้องการลด";
+		set .@vit,0;
+		input .@vit;
+		if(.@vit <= vitx){
+			next;
+			mes "[พนักงานลดสเตตัส]";
+			mes "กรุณาใส่จำนวนที่มากกว่าที่คุณมีอยู่";
+			end;
+		}
+		next;
+		mes "เสร็จสมบูรณ์แล้ว";
+		delitem 7227,50;
+		set Zeny,Zeny-50000000;
+		statusup2 15, -.@vit ;
+		break;
+	case 4:
+		next;
+		mes "[พนักงานลดสเตตัส]";
+		mes "กรุณาใส่จำนวนที่ต้องการลด";
+		set .@int,0;
+		input .@int;
+		if(.@int <= intx){
+			next;
+			mes "[พนักงานลดสเตตัส]";
+			mes "กรุณาใส่จำนวนที่มากกว่าที่คุณมีอยู่";
+			end;
+		}
+		next;
+		mes "เสร็จสมบูรณ์แล้ว";
+		delitem 7227,50;
+		set Zeny,Zeny-50000000;
+		statusup2 16, -.@int ;
+		break;
+	case 5:
+		next;
+		mes "[พนักงานลดสเตตัส]";
+		mes "กรุณาใส่จำนวนที่ต้องการลด";
+		set .@dex,0;
+		input .@dex;
+		if(.@dex <= dexx){
+			next;
+			mes "[พนักงานลดสเตตัส]";
+			mes "กรุณาใส่จำนวนที่มากกว่าที่คุณมีอยู่";
+			end;
+		}
+		next;
+		mes "เสร็จสมบูรณ์แล้ว";
+		delitem 7227,50;
+		set Zeny,Zeny-50000000;
+		statusup2 17, -.@dex ;
+		break;
+	case 6:
+		next;
+		mes "[พนักงานลดสเตตัส]";
+		mes "กรุณาใส่จำนวนที่ต้องการลด";
+		set .@luk,0;
+		input .@luk;
+		if(.@luk <= lukx){
+			next;
+			mes "[พนักงานลดสเตตัส]";
+			mes "กรุณาใส่จำนวนที่มากกว่าที่คุณมีอยู่";
+			end;
+		}
+		next;
+		mes "เสร็จสมบูรณ์แล้ว";
+		delitem 7227,50;
+		set Zeny,Zeny-50000000;
+		statusup2 18, -.@luk ;
+		break;
+}
+end;
+OnInit:
+	waitingroom "ลดสเตตัส", 0;
+	end;
+}
+
+oasis,138,102,4	script	สลับสเตตัส	4_F_CHNDRESS2,{
+set .@str,readparam(13);
+set .@agi,readparam(14);
+set .@vit,readparam(15);
+set .@int,readparam(16);
+set .@dex,readparam(17);
+set .@luk,readparam(18);
+mes "[พนักงานลดสเตตัส]";
+mes "คุณมีสเตตัส ดังนี้";
+mes "STR : ^FF0000"+ .@str +"^000000";
+mes "AGI : ^FF0000"+ .@agi +"^000000";
+mes "VIT : ^FF0000"+ .@vit +"^000000";
+mes "INT : ^FF0000"+ .@int +"^000000";
+mes "DEX : ^FF0000"+ .@dex +"^000000";
+mes "LUK : ^FF0000"+ .@luk +"^000000";
+mes "โดยต้องใช้ ^FF0000Cash Coin 50 ea^000000";
+mes "เลือกสเตตัสที่เจ้าต้องเลยการได้";
+next;
+if(countitem(26000) < 50){
+	mes "^FF0000คุณมีไอเท็มไม่เพียงพอ ที่จะทำราย^000000";
+	end;
+}
+mes "เลือกสเตัส ^FF0000[1]^000000 และ ^FF0000[2]^000000";
+switch(select("^FF0000[1]^000000STR:^FF0000[1]^000000AGI:^FF0000[1]^000000VIT:^FF0000[1]^000000INT:^FF0000[1]^000000DEX:^FF0000[1]^000000LUK")){
+	case 1:
+		next;
+		switch(select("^FF0000[2]^000000AGI:^FF0000[2]^000000VIT:^FF0000[2]^000000INT:^FF0000[2]^000000DEX:^FF0000[2]^000000LUK")){
+			case 1:
+				statusup2 13, -.@str-1;
+				statusup2 14, -.@agi-1;
+				statusup2 13, .@agi-1;
+				statusup2 14, .@str-1;
+				delitem 26000,50;
+				break;
+			case 2:
+				statusup2 13, -.@str-1;
+				statusup2 15, -.@vit-1;
+				statusup2 13, .@vit-1;
+				statusup2 15, .@str-1;
+				delitem 26000,50;
+				break;
+			case 3:
+				statusup2 13, -.@str-1;
+				statusup2 16, -.@int-1;
+				statusup2 13, .@int-1;
+				statusup2 16, .@str-1;
+				delitem 26000,50;
+				break;
+			case 4:
+				statusup2 13, -.@str-1;
+				statusup2 17, -.@dex-1;
+				statusup2 13, .@dex-1;
+				statusup2 17, .@str-1;
+				delitem 26000,50;
+				break;
+			case 5:
+				statusup2 13, -.@str-1;
+				statusup2 18, -.@luk-1;
+				statusup2 13, .@luk-1;
+				statusup2 18, .@str-1;
+				delitem 26000,50;
+				break;
+		}
+		break;
+	case 2:
+		next;
+		switch(select("^FF0000[2]^000000STR:^FF0000[2]^000000VIT:^FF0000[2]^000000INT:^FF0000[2]^000000DEX:^FF0000[2]^000000LUK")){
+			case 1:
+				statusup2 14, -.@agi-1;
+				statusup2 13, -.@str-1;
+				statusup2 14, .@str-1;
+				statusup2 13, .@agi-1;
+				delitem 26000,50;
+				break;
+			case 2:
+				statusup2 14, -.@agi-1;
+				statusup2 15, -.@vit-1;
+				statusup2 14, .@vit-1;
+				statusup2 15, .@agi-1;
+				delitem 26000,50;
+				break;
+			case 3:
+				statusup2 14, -.@agi-1;
+				statusup2 16, -.@int-1;
+				statusup2 14, .@int-1;
+				statusup2 16, .@agi-1;
+				delitem 26000,50;
+				break;
+			case 4:
+				statusup2 14, -.@agi-1;
+				statusup2 17, -.@dex-1;
+				statusup2 14, .@dex-1;
+				statusup2 17, .@agi-1;
+				delitem 26000,50;
+				break;
+			case 5:
+				statusup2 14, -.@agi-1;
+				statusup2 18, -.@luk-1;
+				statusup2 14, .@luk-1;
+				statusup2 18, .@agi-1;
+				delitem 26000,50;
+				break;
+		}
+		break;
+	case 3:
+		next;
+		switch(select("^FF0000[2]^000000STR:^FF0000[2]^000000AGI:^FF0000[2]^000000INT:^FF0000[2]^000000DEX:^FF0000[2]^000000LUK")){
+			case 1:
+				statusup2 15, -.@vit-1;
+				statusup2 13, -.@str-1;
+				statusup2 15, .@str-1;
+				statusup2 13, .@vit-1;
+				delitem 26000,50;
+				break;
+			case 2:
+				statusup2 15, -.@vit-1;
+				statusup2 14, -.@agi-1;
+				statusup2 15, .@agi-1;
+				statusup2 14, .@vit-1;
+				delitem 26000,50;
+				break;
+			case 3:
+				statusup2 14, -.@agi-1;
+				statusup2 16, -.@int-1;
+				statusup2 15, .@int-1;
+				statusup2 16, .@vit-1;
+				delitem 26000,50;
+				break;
+			case 4:
+				statusup2 15, -.@vit-1;
+				statusup2 17, -.@dex-1;
+				statusup2 15, .@dex-1;
+				statusup2 17, .@vit-1;
+				delitem 26000,50;
+				break;
+			case 5:
+				statusup2 15, -.@vit-1;
+				statusup2 18, -.@luk-1;
+				statusup2 15, .@luk-1;
+				statusup2 18, .@vit-1;
+				delitem 26000,50;
+				break;
+		}
+		break;
+	case 4:
+		next;
+		switch(select("^FF0000[2]^000000STR:^FF0000[2]^000000AGI:^FF0000[2]^000000VIT:^FF0000[2]^000000DEX:^FF0000[2]^000000LUK")){
+			case 1:
+				statusup2 16, -.@int-1;
+				statusup2 13, -.@str-1;
+				statusup2 16, .@str-1;
+				statusup2 13, .@int-1;
+				delitem 26000,50;
+				break;
+			case 2:
+				statusup2 16, -.@int-1;
+				statusup2 14, -.@agi-1;
+				statusup2 16, .@agi-1;
+				statusup2 14, .@int-1;
+				delitem 26000,50;
+				break;
+			case 3:
+				statusup2 16, -.@int-1;
+				statusup2 15, -.@vit-1;
+				statusup2 16, .@vit-1;
+				statusup2 15, .@int-1;
+				delitem 26000,50;
+				break;
+			case 4:
+				statusup2 16, -.@int-1;
+				statusup2 17, -.@dex-1;
+				statusup2 16, .@dex-1;
+				statusup2 17, .@int-1;
+				delitem 26000,50;
+				break;
+			case 5:
+				statusup2 16, -.@int-1;
+				statusup2 18, -.@luk-1;
+				statusup2 16, .@luk-1;
+				statusup2 18, .@int-1;
+				delitem 26000,50;
+				break;
+		}
+		break;
+	case 5:
+		next;
+		switch(select("^FF0000[2]^000000STR:^FF0000[2]^000000AGI:^FF0000[2]^000000VIT:^FF0000[2]^000000INT:^FF0000[2]^000000LUK")){
+			case 1:
+				statusup2 17, -.@dex-1;
+				statusup2 13, -.@str-1;
+				statusup2 17, .@str-1;
+				statusup2 13, .@dex-1;
+				delitem 26000,50;
+				break;
+			case 2:
+				statusup2 17, -.@dex-1;
+				statusup2 14, -.@agi-1;
+				statusup2 17, .@agi-1;
+				statusup2 14, .@dex-1;
+				delitem 26000,50;
+				break;
+			case 3:
+				statusup2 17, -.@dex-1;
+				statusup2 15, -.@vit-1;
+				statusup2 17, .@vit-1;
+				statusup2 15, .@dex-1;
+				delitem 26000,50;
+				break;
+			case 4:
+				statusup2 17, -.@dex-1;
+				statusup2 16, -.@int-1;
+				statusup2 17, .@int-1;
+				statusup2 16, .@dex-1;
+				delitem 26000,50;
+				break;
+			case 5:
+				statusup2 17, -.@dex-1;
+				statusup2 18, -.@luk-1;
+				statusup2 17, .@luk-1;
+				statusup2 18, .@dex-1;
+				delitem 26000,50;
+				break;
+		}
+		break;
+	case 6:
+		next;
+		switch(select("^FF0000[2]^000000STR:^FF0000[2]^000000AGI:^FF0000[2]^000000VIT:^FF0000[2]^000000INT:^FF0000[2]^000000DEX")){
+			case 1:
+				statusup2 18, -.@luk-1;
+				statusup2 13, -.@str-1;
+				statusup2 18, .@str-1;
+				statusup2 13, .@luk-1;
+				delitem 26000,50;
+				break;
+			case 2:
+				statusup2 18, -.@luk-1;
+				statusup2 14, -.@agi-1;
+				statusup2 18, .@agi-1;
+				statusup2 14, .@luk-1;
+				delitem 26000,50;
+				break;
+			case 3:
+				statusup2 18, -.@luk-1;
+				statusup2 15, -.@vit-1;
+				statusup2 18, .@vit-1;
+				statusup2 15, .@luk-1;
+				delitem 26000,50;
+				break;
+			case 4:
+				statusup2 18, -.@luk-1;
+				statusup2 16, -.@int-1;
+				statusup2 18, .@int-1;
+				statusup2 16, .@luk-1;
+				delitem 26000,50;
+				break;
+			case 5:
+				statusup2 18, -.@luk-1;
+				statusup2 17, -.@dex-1;
+				statusup2 18, .@dex-1;
+				statusup2 17, .@luk-1;
+				delitem 26000,50;
+				break;
+		}
+		break;
+}
+end;
+OnInit:
+	waitingroom "สลับสเตตัส", 0;
+	end;
+}

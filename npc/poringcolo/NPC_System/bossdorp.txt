@@ -1,0 +1,68 @@
+-	script	bossdorp	-1,{
+
+OnNPCKillEvent:
+// กำหนด รหัสมอนสเตอร์ที่ต้องการให้ดรอป MVP Card ตรงนี้
+setarray .boss[0],1511,1647,1785,1630,1399,1039,1874,2068,1272,1719,1046,1389,1112,1115,1957,
+		1418,1871,1252,1768,1086,1688,1646,1373,1147,1059,1150,1956,2022,1087,1190,1038,1157,
+		1159,1502,1623,1650,1583,1708,1312,1751,1685,1648,1917,1658,1929,2709,2726,2719,2715,2728,2743,2811;
+setarray .poring[0],1002,1113,1031,1857;
+setarray .miniboss[0],1096,1388,1582,1090,1120;
+setarray .roomboss[0],3302,3303,3304,3305;
+// ปิดบรรทัดสุดท้ายด้วยเครื่องหมาย ;
+
+// Boss
+set .@bossrand,4000; // เปอร์เซน 100 = 1%
+setarray .bossitem[0],7227;  //==== Random ไอเท็มจะดรอป (ถ้าไม่ต้องการให้ Random ไอเท็ม ให้ใส่ไอเท็มไปชิ้นเดียวครับ)
+// Poring
+set .@poringrand,8000; // เปอร์เซน 100 = 1%
+setarray .poringitem[0],7300;  //==== Random ไอเท็มจะดรอป (ถ้าไม่ต้องการให้ Random ไอเท็ม ให้ใส่ไอเท็มไปชิ้นเดียวครับ)
+// Mini Boss
+set .@minibossrand,6000; // เปอร์เซน 100 = 1%
+setarray .minibossitem[0],7228;  //==== Random ไอเท็มจะดรอป (ถ้าไม่ต้องการให้ Random ไอเท็ม ให้ใส่ไอเท็มไปชิ้นเดียวครับ)
+// Room Boss
+set .@roombossrand,2000; // เปอร์เซน 100 = 1%
+setarray .roombossitem[0],7227;  //==== Random ไอเท็มจะดรอป (ถ้าไม่ต้องการให้ Random ไอเท็ม ให้ใส่ไอเท็มไปชิ้นเดียวครับ)
+
+// Boss
+for (set .@c, 0; .@c < getarraysize(.boss); set .@c, .@c + 1){
+	if (killedrid == .boss[.@c]){
+		if (rand(10000) <= .@bossrand) {
+			// เป็น % ด้านบน
+			set .Random1, rand( getarraysize( .bossitem ) );
+			getitem .bossitem[ .Random1 ], 1; //=== จำนวนที่จะดรอป คือ 1 ชิ้น
+		}
+	}
+}
+// Poring
+for (set .@c, 0; .@c < getarraysize(.poring); set .@c, .@c + 1){
+	if (killedrid == .poring[.@c]){
+		if (rand(10000) <= .@poringrand) {
+			// เป็น % ด้านบน
+			set .Random1, rand( getarraysize( .poringitem ) );
+			getitem .poringitem[ .Random1 ], 1; //=== จำนวนที่จะดรอป คือ 1 ชิ้น
+		}
+	}
+}
+// Mini Boss
+for (set .@c, 0; .@c < getarraysize(.miniboss); set .@c, .@c + 1){
+	if (killedrid == .miniboss[.@c]){
+		if (rand(10000) <= .@minibossrand) {
+			// เป็น % ด้านบน
+			set .Random1, rand( getarraysize( .minibossitem ) );
+			getitem .minibossitem[ .Random1 ], 1; //=== จำนวนที่จะดรอป คือ 1 ชิ้น
+		}
+	}
+}
+// Room Boss
+for (set .@c, 0; .@c < getarraysize(.roomboss); set .@c, .@c + 1){
+	if (killedrid == .roomboss[.@c]){
+		if (rand(10000) <= .@roombossrand) {
+			// เป็น % ด้านบน
+			set .Random1, rand( getarraysize( .roombossitem ) );
+			getitem .roombossitem[ .Random1 ], 1; //=== จำนวนที่จะดรอป คือ 1 ชิ้น
+		}
+	}
+}
+
+end;
+}

@@ -1,0 +1,209 @@
+//===============================
+// Script : Event Crystal
+// Designe By : ParadoX
+//===============================
+
+oasis,0,0,0	script	::TreasureEvent	111,{
+	close;
+trevstart:
+	set $@trevent,rand(20,50);
+	set $@ftrevent,0;
+	announce "Poring Event : เหล่า Poring ได้ปรากฏตัว ณ เมือง Oasis จำนวน "+$@trevent+"  มีเวลาในการล่าสมบัติ 5 นาที",0,0xFF1493;
+
+	monster "oasis",0,0,"Event",1002,$@trevent,"TreasureEvent::OnTreasureDie";
+	end;
+OnTreasureDie:
+	set $@ftrevent,$@ftrevent+1;
+	set @Low,1; // กำหนดจำนวนไอเท็มต่ำสุด
+	set @Up,3; // กำหนดจำนวนไอเท็มสูงสุด
+	set @random,rand(@Low,@Up);
+	if($@ftrevent>=$@trevent)
+	announce "ผู้เล่น " + strcharinfo(0) + " ได้ค้นพบ Poring สุดท้าย",0,FF1493;
+	if($@ftrevent!=$@trevent)
+	announce "ผู้เล่น " + strcharinfo(0) + " ได้ค้นพบ Poring ที่ "+$@ftrevent+"/"+$@trevent+"",0,0xFF1493;
+	if (@random == 1){
+		getitem 607,3;  
+	}
+	else if (@random == 2){
+		getitem 7539,5;  
+	}
+	else if (@random == 3){
+		getitem 608,5;
+	}
+	end;
+trevend:
+	if($@ftrevent!=$@trevent)
+	announce "หมดเวลาในการล่าสมบัติ Poring ทุกถูกทำลาย",0,0xFF1493;
+	killmonster "oasis","TreasureEvent::OnTreasureDie";
+	end;
+OnTimeout:
+	end;
+
+OnClock0105:
+	goto trevstart;
+	end;
+OnClock0110:
+	goto trevend;
+	end;
+
+OnClock0205:
+	goto trevstart;
+	end;
+OnClock0210:
+	goto trevend;
+	end;
+
+OnClock0305:
+	goto trevstart;
+	end;
+OnClock0310:
+	goto trevend;
+	end;
+
+OnClock0405:
+	goto trevstart;
+	end;
+OnClock0410:
+	goto trevend;
+	end;
+
+OnClock0505:
+	goto trevstart;
+	end;
+OnClock0510:
+	goto trevend;
+	end;
+
+OnClock0605:
+	goto trevstart;
+	end;
+OnClock0610:
+	goto trevend;
+	end;
+
+OnClock0705:
+	goto trevstart;
+	end;
+OnClock0710:
+	goto trevend;
+	end;
+
+OnClock0805:
+	goto trevstart;
+	end;
+OnClock0810:
+	goto trevend;
+	end;
+
+OnClock0905:
+	goto trevstart;
+	end;
+OnClock0910:
+	goto trevend;
+	end;
+
+OnClock1005:
+	goto trevstart;
+	end;
+OnClock1010:
+	goto trevend;
+	end;
+
+OnClock1105:
+	goto trevstart;
+	end;
+OnClock1110:
+	goto trevend;
+	end;
+
+OnClock1205:
+	goto trevstart;
+	end;
+OnClock1210:
+	goto trevend;
+	end;
+
+OnClock1305:
+	goto trevstart;
+	end;
+OnClock1310:
+	goto trevend;
+	end;
+
+OnClock1405:
+	goto trevstart;
+	end;
+OnClock1410:
+	goto trevend;
+	end;
+
+OnClock1505:
+	goto trevstart;
+	end;
+OnClock1510:
+	goto trevend;
+	end;
+
+OnClock1605:
+	goto trevstart;
+	end;
+OnClock1610:
+	goto trevend;
+	end;
+
+OnClock1705:
+	goto trevstart;
+	end;
+OnClock1710:
+	goto trevend;
+	end;
+
+OnClock1805:
+	goto trevstart;
+	end;
+OnClock1810:
+	goto trevend;
+	end;
+
+OnClock1905:
+	goto trevstart;
+	end;
+OnClock1910:
+	goto trevend;
+	end;
+
+OnClock2005:
+	goto trevstart;
+	end;
+OnClock2010:
+	goto trevend;
+	end;
+
+OnClock2105:
+	goto trevstart;
+	end;
+OnClock2110:
+	goto trevend;
+	end;
+
+OnClock2205:
+	goto trevstart;
+	end;
+OnClock2210:
+	goto trevend;
+	end;
+
+OnClock2305:
+	goto trevstart;
+	end;
+OnClock2310:
+	goto trevend;
+	end;
+
+OnClock0005:
+	goto trevstart;
+	end;
+OnClock0010:
+	goto trevend;
+	end;
+}
